@@ -4,15 +4,15 @@ public abstract class Persona {
 	//ATRIBUTOS
 		private Long dni;
 		private String nombre;
-		private Long celular;
+		private String celular;
 		private String email;
-		private String legajo;
+		private Integer legajo;
 		private String apellido;
 		
 		
 		
 		//CONSTRUCTOR
-		public Persona(String legajo, Long dni, String nombre, Long celular, String email, String apellido) {
+		public Persona(Integer legajo, Long dni, String nombre, String celular, String email, String apellido) {
 			this.setDni(dni);
 			this.nombre=nombre;
 			this.celular=celular;
