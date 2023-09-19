@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Alumno{
 
 	//ATRIBUTOS
+	private Integer idAlumno;
 	private Long dniAlu;
 	private String nombreAlu;
 	private String apellidoAlu;
@@ -15,7 +16,8 @@ public class Alumno{
 	
 
 	//CONSTRUCTOR
-	public Alumno(Long dniAlu, String nombreAlu, String apellidoAlu, LocalDate fechaDeNacimientoAlu, LocalDate fechaDeIngresoAlu) {
+	public Alumno(Integer idAlumno, Long dniAlu, String nombreAlu, String apellidoAlu, LocalDate fechaDeNacimientoAlu, LocalDate fechaDeIngresoAlu) {
+		this.idAlumno = idAlumno;
 		this.dniAlu = dniAlu;
 		this.nombreAlu=nombreAlu;
 		this.apellidoAlu=apellidoAlu;
@@ -84,17 +86,27 @@ public class Alumno{
 		this.fechaDeIngresoAlu = fechaDeIngresoAlu;
 	}
 
+
+	public Integer getIdAlumno() {
+		return idAlumno;
+	}
+
+
+	public void setIdAlumno(Integer idAlumno) {
+		this.idAlumno = idAlumno;
+	}
+
 	//--------------------------------------------------
 	
-	
-	public Boolean registrarNota(idCurso,idAlumno,nota) {
+	/*
+	public Boolean registrarNota(idComision, idAlumno, nota) {
 		 //la nota debe estar entre 1 a 10
 		 //no se puede asignar una nota mayor o igual a 7 si sus correlativas no estan aprobadas
 		 //las notas son de tipo 1erParcial, 2doParcial ,rec!parcial,Rec2parcial
 		 // se pueden asigna hasta 3 tipos de notas pero no se puede cargar 2 notas del mismo tipo 
 		 
 	 }
-	/*
+	
 	 public <ArrayList> obtenerListadoMateriasAprobadas(idAlumno){
 		// va a mostrar  dni,nombredelAlumno y apellido, materia , nota y ciclo lectivo
 	 }
