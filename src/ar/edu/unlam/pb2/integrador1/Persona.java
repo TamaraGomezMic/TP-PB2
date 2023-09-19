@@ -2,7 +2,7 @@ package ar.edu.unlam.pb2.integrador1;
 
 import java.time.LocalDate;
 
-public abstract class Persona {
+public class Persona {
 	//ATRIBUTOS
 		private Long dni;
 		private String nombre;

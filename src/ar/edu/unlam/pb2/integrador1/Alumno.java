@@ -2,42 +2,30 @@ package ar.edu.unlam.pb2.integrador1;
 
 import java.time.LocalDate;
 
-public class Alumno extends Persona{
+public class Alumno{
 
 	//ATRIBUTOS
-	private LocalDate fechaDeIngreso;
+	private Long dniAlu;
+	private String nombreAlu;
+	private String apellidoAlu;
+	private LocalDate fechaDeNacimientoAlu;
+	private LocalDate fechaDeIngresoAlu;
 		
     
 	
 
 	//CONSTRUCTOR
-	public 	Alumno(Long dni, String nombre, Long celular, String email, String apellido, LocalDate fechaDeNacimiento, LocalDate fechaDeIngreso) {
-	super(dni, nombre, celular, email, apellido, fechaDeNacimiento);
+	public Alumno(Long dniAlu, String nombreAlu, String apellidoAlu, LocalDate fechaDeNacimientoAlu, LocalDate fechaDeIngresoAlu) {
+		this.dniAlu = dniAlu;
+		this.nombreAlu=nombreAlu;
+		this.apellidoAlu=apellidoAlu;
+		this.fechaDeNacimientoAlu=fechaDeNacimientoAlu;
+		this.fechaDeIngresoAlu=fechaDeIngresoAlu;
 		
-	this.fechaDeIngreso = fechaDeIngreso;
-	
 	}
-	
-	public Alumno(Long dni, String nombre, String celular, String email, String apellido) {
-		super();
 
-	}
-	
-	public Alumno(Long dni, String apellido, String nombre) {
-		
-		
-		
-		
-	}
 
 	//METODOS
-	public LocalDate getFechaDeIngreso() {
-		return fechaDeIngreso;
-	}
-
-	public void setFechaDeIngreso(LocalDate fechaDeIngreso) {
-		this.fechaDeIngreso = fechaDeIngreso;
-	}
 	
 	
 	
@@ -47,7 +35,59 @@ public class Alumno extends Persona{
 	
 
 	// creo que tendria que tener unaclase aparte donde este todo el alumno , la carrera, las materias aprobadas
-	 public Boolean registrarNota (idCurso,idAlumno,nota) {
+	 public Long getDniAlu() {
+		return dniAlu;
+	}
+
+
+	public void setDniAlu(Long dniAlu) {
+		this.dniAlu = dniAlu;
+	}
+
+
+	public String getNombreAlu() {
+		return nombreAlu;
+	}
+
+
+	public void setNombreAlu(String nombreAlu) {
+		this.nombreAlu = nombreAlu;
+	}
+
+
+	public String getApellidoAlu() {
+		return apellidoAlu;
+	}
+
+
+	public void setApellidoAlu(String apellidoAlu) {
+		this.apellidoAlu = apellidoAlu;
+	}
+
+
+	public LocalDate getFechaDeNacimientoAlu() {
+		return fechaDeNacimientoAlu;
+	}
+
+
+	public void setFechaDeNacimientoAlu(LocalDate fechaDeNacimientoAlu) {
+		this.fechaDeNacimientoAlu = fechaDeNacimientoAlu;
+	}
+
+
+	public LocalDate getFechaDeIngresoAlu() {
+		return fechaDeIngresoAlu;
+	}
+
+
+	public void setFechaDeIngresoAlu(LocalDate fechaDeIngresoAlu) {
+		this.fechaDeIngresoAlu = fechaDeIngresoAlu;
+	}
+
+
+	
+	
+	/*public Boolean registrarNota (idCurso,idAlumno,nota) {
 		 //la nota debe estar entre 1 a 10
 		 //no se puede asignar una nota mayor o igual a 7 si sus correlativas no estan aprobadas
 		 //las notas son de tipo 1erParcial, 2doParcial ,rec!parcial,Rec2parcial
@@ -63,6 +103,6 @@ public class Alumno extends Persona{
 		 // va a mostrar la nombre de la materia
 	 }
 	 
-	 
+	*/ 
 
 }

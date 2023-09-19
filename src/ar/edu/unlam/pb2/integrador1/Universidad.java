@@ -20,7 +20,7 @@ public class Universidad {
 
 		public Boolean registrar(Alumno alumno) {
 
-			if (buscarAlumnoPorDni(alumno.getDni()) == null)
+			if (buscarAlumnoPorDni(alumno.getDniAlu()) == null)
 			
 				return this.alumnos.add(alumno);
 
@@ -30,7 +30,7 @@ public class Universidad {
 		public Alumno buscarAlumnoPorDni(Long dni) {
 
 			for (int i = 0; i < alumnos.size(); i++) {
-				if (this.alumnos.get(i).getDni().equals(dni))
+				if (this.alumnos.get(i).getDniAlu().equals(dni))
 					return this.alumnos.get(i);
 			}
 			
@@ -39,7 +39,7 @@ public class Universidad {
 
 		public Boolean existeAlumno(Long dni) {
 			for (int i = 0; i < alumnos.size(); i++) {
-				if (this.alumnos.get(i).getDni().equals(dni))
+				if (this.alumnos.get(i).getDniAlu().equals(dni))
 					return true;
 			}
 			return false;

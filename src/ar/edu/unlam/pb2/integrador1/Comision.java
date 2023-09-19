@@ -1,6 +1,8 @@
 package ar.edu.unlam.pb2.integrador1;
 
 public class Comision {
+	
+	
 
 	// no se puede generar 2 comisiones para la misma materia , el mismo ciclo lectivo y el mismo turno 
 	
