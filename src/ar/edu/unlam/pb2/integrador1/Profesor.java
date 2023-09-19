@@ -1,5 +1,5 @@
 package ar.edu.unlam.pb2.integrador1;
 
-public class Profesor {
-
+public class Profesor extends Persona {
+	
 }
