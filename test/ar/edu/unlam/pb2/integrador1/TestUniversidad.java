@@ -17,11 +17,10 @@ public class TestUniversidad {
     	String nombre = "Marta";
     	String apellido = "perez";
     	Long dni= 44555897L; 
-    	Integer legajo = 1;
     	String celular = "15-6665-5848";
     	String email = "martaPerez@unlam.edu.ar";
     	
-   		Alumno alumno = new Alumno(legajo , dni, nombre, celular,  email, apellido);
+   		Alumno alumno = new Alumno(dni, nombre, celular,  email, apellido);
     	
 		Boolean registroExitoso = unlam.registrar(alumno);
     	assertTrue(registroExitoso);
@@ -36,7 +35,7 @@ public class TestUniversidad {
     	Universidad unlam = new Universidad (nombre);
     	nombre = "Marta";
     	String apellido = "perez";
-    	Integer dni= 44555; 
+    	Long dni= 44555; 
     	Alumno alumno = new Alumno (dni,apellido, nombre);
     	Alumno alumno2 = new Alumno (dni,"jose", "Lopez");
     	unlam.registrar(alumno);
@@ -63,17 +62,23 @@ public class TestUniversidad {
 	
 	@Test
 	public void queSePuedaInscribirUnAlumnoenMateria() {
-		 String  nombre = "Unlam";
-    	Universidad unlam = new Universidad (nombre);
+		//PREPARACION
+		String  nombre = "Unlam";
     	nombre = "PB2 ";
         Integer codigo = 1;
-        Materia pb2 = new Materia (codigo,nombre);
-        unlam.registraMateria(pb2);
      	nombre = "Marta";
     	String apellido = "perez";
-    	Integer dni= 44555; 
-        Alumno alumno = new Alumno (dni,apellido, nombre);
+    	Long dni= 44555;    
+    	
+    	//ACCION
+    	Universidad unlam = new Universidad (nombre);
+    	Materia pb2 = new Materia (codigo,nombre);
+    	Boolean SePudoRegistraMateria = unlam.registraMateria(pb2);
+    	Alumno alumno = new Alumno (dni,apellido, nombre);
     	unlam.registrar(alumno);
+    	
+    	//VALIDACION
+    	
     	assertTrue (unlam.inscribirAlumnoAUnaMateria(dni,codigo)) ;
     	       
 	}

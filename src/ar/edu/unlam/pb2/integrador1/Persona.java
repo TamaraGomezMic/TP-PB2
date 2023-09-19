@@ -1,24 +1,32 @@
 package ar.edu.unlam.pb2.integrador1;
 
+import java.time.LocalDate;
+
 public abstract class Persona {
 	//ATRIBUTOS
 		private Long dni;
 		private String nombre;
-		private String celular;
+		private Long celular;
 		private String email;
-		private Integer legajo;
 		private String apellido;
-		
+		private LocalDate fechaDeNacimiento;
 		
 		
 		//CONSTRUCTOR
-		public Persona(Integer legajo, Long dni, String nombre, String celular, String email, String apellido) {
+		public Persona(Long dni, String nombre, Long celular, String email, String apellido, LocalDate fechaDeNacimiento) {
 			this.setDni(dni);
 			this.nombre=nombre;
 			this.celular=celular;
 			this.email=email;
-			this.legajo=legajo;
 			this.apellido=apellido;
+			this.fechaDeNacimiento=fechaDeNacimiento;
+			
+		}
+
+
+
+		public Persona() {
+			
 		}
 
 
@@ -65,20 +73,6 @@ public abstract class Persona {
 
 
 
-		public String getLegajo() {
-			return legajo;
-		}
-
-
-
-
-		public void setLegajo(String legajo) {
-			this.legajo = legajo;
-		}
-
-
-
-
 		public Long getDni() {
 			return dni;
 		}
@@ -102,5 +96,17 @@ public abstract class Persona {
 
 		public void setApellido(String apellido) {
 			this.apellido = apellido;
+		}
+
+
+
+		public LocalDate getFechaDeNacimiento() {
+			return fechaDeNacimiento;
+		}
+
+
+
+		public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
+			this.fechaDeNacimiento = fechaDeNacimiento;
 		}
 }

@@ -9,11 +9,11 @@ public class Universidad {
 		private ArrayList<Alumno> alumnos;
 		private String nombre;
 		private ArrayList<Materia> materias;
-		private ArrayList <InscripcionMateria> inscripcionesMateria;
+		private ArrayList <InscripcionAmateria> inscripcionesMateria;
 
 		public Universidad(String nombre) {
-			this.nombre = nombre;
-			this.alumnos = new ArrayList<Alumno>();
+			this.setNombre(nombre);
+			this.alumnos = new ArrayList<>();
 			this.materias = new ArrayList<>();
 			this.inscripcionesMateria = new ArrayList<>();
 		}
@@ -27,7 +27,7 @@ public class Universidad {
 			return false;
 		}
 
-		public Alumno buscarAlumnoPorDni(Integer dni) {
+		public Alumno buscarAlumnoPorDni(Long dni) {
 
 			for (int i = 0; i < alumnos.size(); i++) {
 				if (this.alumnos.get(i).getDni().equals(dni))
@@ -37,7 +37,7 @@ public class Universidad {
 			return null;
 		}
 
-		public Boolean existeAlumno(Integer dni) {
+		public Boolean existeAlumno(Long dni) {
 			for (int i = 0; i < alumnos.size(); i++) {
 				if (this.alumnos.get(i).getDni().equals(dni))
 					return true;
@@ -49,8 +49,9 @@ public class Universidad {
 		   
 			return this.materias.add(materia);
 		}
+		
 
-		public boolean inscribirAlumnoAUnaMateria(Integer dni, Integer codigo) {
+		public boolean inscribirAlumnoAUnaMateria(Long dni, Integer codigo) {
 			
 			//no se puede inscribir alumnos si no tiene al menps cursada todas las correlativas(correlativas nota >=4)
 		
@@ -59,7 +60,7 @@ public class Universidad {
 			
 			if (alumno != null && materia != null) {
 				
-		    InscripcionMateria  inscripcionMateria = new InscripcionMateria (alumno,materia);
+			InscripcionAmateria  inscripcionMateria = new InscripcionAmateria (alumno,materia);
 			return this.inscripcionesMateria.add(inscripcionMateria );
 				
 			}
@@ -73,6 +74,14 @@ public class Universidad {
 					return this.materias.get(i);
 			}
 			return null;
+		}
+
+		public String getNombre() {
+			return nombre;
+		}
+
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
 		}
 		
 

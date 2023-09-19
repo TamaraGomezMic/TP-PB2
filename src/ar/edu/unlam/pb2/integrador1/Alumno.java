@@ -1,18 +1,47 @@
 package ar.edu.unlam.pb2.integrador1;
 
+import java.time.LocalDate;
 
 public class Alumno extends Persona{
 
-	
+	//ATRIBUTOS
+	private LocalDate fechaDeIngreso;
 		
-    	
-	public 	Alumno (Integer legajo, Long dni, String nombre, String celular, String email, String apellido) {
-	super(legajo, dni, nombre, celular, email, apellido);
-		
+    
 	
+
+	//CONSTRUCTOR
+	public 	Alumno(Long dni, String nombre, Long celular, String email, String apellido, LocalDate fechaDeNacimiento, LocalDate fechaDeIngreso) {
+	super(dni, nombre, celular, email, apellido, fechaDeNacimiento);
+		
+	this.fechaDeIngreso = fechaDeIngreso;
 	
 	}
 	
+	public Alumno(Long dni, String nombre, String celular, String email, String apellido) {
+		super();
+
+	}
+	
+	public Alumno(Long dni, String apellido, String nombre) {
+		
+		
+		
+		
+	}
+
+	//METODOS
+	public LocalDate getFechaDeIngreso() {
+		return fechaDeIngreso;
+	}
+
+	public void setFechaDeIngreso(LocalDate fechaDeIngreso) {
+		this.fechaDeIngreso = fechaDeIngreso;
+	}
+	
+	
+	
+
 	// no se puede asignar 2 alumnos con el mismo DNI
 	
 	
