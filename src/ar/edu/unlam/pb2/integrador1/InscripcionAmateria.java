@@ -1,6 +1,8 @@
 package ar.edu.unlam.pb2.integrador1;
 
-
+// no se puede inscribir si esta fuera de la fecha de inscripcion 
+// no se puede inscribir si la cantidad de alunmos ya esta completya 
+//no se puede inscribir si el alumno ya esta inscripto el mismo dia y turno 
 
 public class InscripcionAmateria {
 	private Alumno alumno;
@@ -8,6 +10,8 @@ public class InscripcionAmateria {
 	private Nota nota;
 
 	public InscripcionAmateria(Alumno alumno, Materia materia) {
+		
+		
 		this.alumno=alumno;
 		this.materia = materia;
 	}

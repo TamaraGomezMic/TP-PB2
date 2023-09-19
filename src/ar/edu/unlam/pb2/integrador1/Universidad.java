@@ -51,6 +51,8 @@ public class Universidad {
 		}
 
 		public boolean inscribirAlumnoAUnaMateria(Integer dni, Integer codigo) {
+			
+			//no se puede inscribir alumnos si no tiene al menps cursada todas las correlativas(correlativas nota >=4)
 		
 			Alumno alumno = this.buscarAlumnoPorDni(dni);
 			Materia materia = this.buscarMateriaPorCodigo(codigo);

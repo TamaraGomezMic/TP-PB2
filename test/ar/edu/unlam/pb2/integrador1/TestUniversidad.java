@@ -8,6 +8,8 @@ import org.junit.Test;
 
 
 public class TestUniversidad {
+	
+	// agregar alumno 
 	@Test
 	public void queSePuedaRegistrarUnAlumnoAUnaUniversidad() {
 		 String  nombreUniversidad = "Unlam";
@@ -45,6 +47,8 @@ public class TestUniversidad {
 	}
 	
 	@Test
+	
+	// agregar materia
 	public void queSePuedaRegistrarUnaMateriaAUnaUniversidad() {
 		 String  nombre = "Unlam";
     	Universidad unlam = new Universidad (nombre);
@@ -73,5 +77,46 @@ public class TestUniversidad {
     	assertTrue (unlam.inscribirAlumnoAUnaMateria(dni,codigo)) ;
     	       
 	}
-
+	
+	//ciclo lectivo  id, fechaDeInicioDeCicloLectivo,fechaFinalizacionCicloLectivo, fechaInicioInscripcion,fechaFinalizacionInscripcion
+	@Test
+	public void queSePuedaCrearUnCicloLectivo() {
+		
+	}
+	 
+		
+	// comision id,Materia,CicloLectivo, turno
+	// que se pueda crear un curso 
+	// PARA MI EN COMISION DEBERIAMOS AGREGAR EL AULA QUE SE ASIGNA DEPENDIENDO LA CANTIDAD DE ALUMNOS
+	@Test
+	public void queSePuedaCrearUnaComision() {
+		
+	}
+	
+	// Aula id, cantidadDeAlumnos
+	@Test
+	public void queSePuedaAsignarUnAula() {
+		
+	}
+	
+	//docente
+	
+	@Test
+	public void queSePuedaRegistrarUnDocente() {
+		
+	}
+	
+	@Test
+	// verificar que el alumno y el curso esten dado de alta
+	public void queSePuedaInscribirAlumnoAunCurso() {
+		
+	}
+	@Test
+	public void queSePuedaCrearUnCicloLectivo() {
+		
+	}
+	
+	
+	
+	
 }
