@@ -84,17 +84,17 @@ public class Alumno{
 		this.fechaDeIngresoAlu = fechaDeIngresoAlu;
 	}
 
-
+	//--------------------------------------------------
 	
 	
-	/*public Boolean registrarNota (idCurso,idAlumno,nota) {
+	public Boolean registrarNota(idCurso,idAlumno,nota) {
 		 //la nota debe estar entre 1 a 10
 		 //no se puede asignar una nota mayor o igual a 7 si sus correlativas no estan aprobadas
 		 //las notas son de tipo 1erParcial, 2doParcial ,rec!parcial,Rec2parcial
 		 // se pueden asigna hasta 3 tipos de notas pero no se puede cargar 2 notas del mismo tipo 
 		 
 	 }
-	 
+	/*
 	 public <ArrayList> obtenerListadoMateriasAprobadas(idAlumno){
 		// va a mostrar  dni,nombredelAlumno y apellido, materia , nota y ciclo lectivo
 	 }
