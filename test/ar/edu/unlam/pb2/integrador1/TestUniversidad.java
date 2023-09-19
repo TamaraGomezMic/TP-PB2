@@ -3,6 +3,8 @@ package ar.edu.unlam.pb2.integrador1;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
+
 import org.junit.Test;
 
 
@@ -13,18 +15,19 @@ public class TestUniversidad {
 	@Test
 	public void queSePuedaRegistrarUnAlumnoAUnaUniversidad() {
 		 String  nombreUniversidad = "Unlam";
-    	Universidad unlam = new Universidad (nombreUniversidad);
     	String nombre = "Marta";
     	String apellido = "perez";
     	Long dni= 44555897L; 
-    	String celular = "15-6665-5848";
-    	String email = "martaPerez@unlam.edu.ar";
-    	
-   		Alumno alumno = new Alumno(dni, nombre, celular,  email, apellido);
+		LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+    	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+    	Integer idAlumno = 1;
+    	Universidad unlam = new Universidad (nombreUniversidad);
+   		Alumno alumno = new Alumno(idAlumno, dni, nombre, apellido, fechaDeIngresoAlu, fechaDeIngresoAlu);
+   		
     	
 		Boolean registroExitoso = unlam.registrar(alumno);
     	assertTrue(registroExitoso);
-    	
+    	System.out.println(registroExitoso);
     	
 	}
 	
@@ -35,9 +38,12 @@ public class TestUniversidad {
     	Universidad unlam = new Universidad (nombre);
     	nombre = "Marta";
     	String apellido = "perez";
-    	Long dni= 44555; 
-    	Alumno alumno = new Alumno (dni,apellido, nombre);
-    	Alumno alumno2 = new Alumno (dni,"jose", "Lopez");
+    	Long dni= 44555L; 
+    	Integer idAlumno = 1;
+    	LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+     	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+    	Alumno alumno = new Alumno (null, dni,apellido, nombre, fechaDeIngresoAlu, fechaDeIngresoAlu);
+    	Alumno alumno2 = new Alumno (idAlumno, dni,"jose", "Lopez", fechaDeIngresoAlu, fechaDeIngresoAlu);
     	unlam.registrar(alumno);
 		Boolean registroExitoso = unlam.registrar(alumno2);
     	assertFalse(registroExitoso);
@@ -52,8 +58,8 @@ public class TestUniversidad {
 		 String  nombre = "Unlam";
     	Universidad unlam = new Universidad (nombre);
     	nombre = "PB2 ";
-        Integer codigo = 1;
-        Materia pb2 = new Materia (codigo,nombre);
+        Integer idAlumno = 1;
+        Materia pb2 = new Materia (idAlumno,nombre);
         assertTrue (unlam.registraMateria(pb2));
     	       
 	}
@@ -65,21 +71,23 @@ public class TestUniversidad {
 		//PREPARACION
 		String  nombre = "Unlam";
     	nombre = "PB2 ";
-        Integer codigo = 1;
+        Integer idAlumno = 1;
      	nombre = "Marta";
     	String apellido = "perez";
-    	Long dni= 44555;    
+    	Long dni= 44555L;    
+    	LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+     	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
     	
     	//ACCION
     	Universidad unlam = new Universidad (nombre);
-    	Materia pb2 = new Materia (codigo,nombre);
-    	Boolean SePudoRegistraMateria = unlam.registraMateria(pb2);
-    	Alumno alumno = new Alumno (dni,apellido, nombre);
+    	Materia pb2 = new Materia (idAlumno,nombre);
+    	unlam.registraMateria(pb2);
+    	Alumno alumno = new Alumno (idAlumno, dni,apellido, nombre, fechaDeIngresoAlu, fechaDeIngresoAlu);
     	unlam.registrar(alumno);
     	
     	//VALIDACION
     	
-    	assertTrue (unlam.inscribirAlumnoAUnaMateria(dni,codigo)) ;
+    	assertTrue (unlam.inscribirAlumnoAUnaMateria(dni,idAlumno)) ;
     	       
 	}
 	
@@ -116,10 +124,7 @@ public class TestUniversidad {
 	public void queSePuedaInscribirAlumnoAunCurso() {
 		
 	}
-	@Test
-	public void queSePuedaCrearUnCicloLectivo() {
-		
-	}
+	
 	
 	
 	
