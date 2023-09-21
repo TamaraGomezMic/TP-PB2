@@ -1,10 +1,22 @@
 package ar.edu.unlam.pb2.integrador1;
 
-public class Carrera {
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-	//compuresto por materias
+public class PlanDeEstudio {
+
+	private Set <Materia> materia;
+	private String nombreCarrera = "";
+	
+	public PlanDeEstudio(String nombreCarrera) {
+		this.nombreCarrera = nombreCarrera;
+		this.materia = new HashSet <Materia>();
+	}
 	
 	
+	
+
 	public Boolean asignarMateriaCorrelativa(Integer codigoMateria, Integer codigoMateriaCorrelativa) {
 		return null;
 		

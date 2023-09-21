@@ -7,7 +7,7 @@ package ar.edu.unlam.pb2.integrador1;
 public class InscripcionAmateria {
 	private Alumno alumno;
 	private Materia materia;
-	private Nota nota;
+	//private Nota nota;
 
 	public InscripcionAmateria(Alumno alumno, Materia materia) {
 		
@@ -32,12 +32,12 @@ public class InscripcionAmateria {
 		this.materia = materia;
 	}
 
-	public Nota getNota() {
-		return nota;
-	}
+	//public Nota getNota() {
+		//return nota;
+	//}
 
-	public void setNota(Nota nota) {
-		this.nota = nota;
-	}
+	//public void setNota(Nota nota) {
+	//	this.nota = nota;
+	//}
 
 }

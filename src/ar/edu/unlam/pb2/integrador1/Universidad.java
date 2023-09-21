@@ -6,51 +6,69 @@ import java.util.ArrayList;
 public class Universidad {
 	
 	// private Alumno [] alumnos;
-		private ArrayList<Alumno> alumnos;
+		private ArrayList<Alumno> alumno;
 		private String nombre;
-		private ArrayList<Materia> materias;
-		private ArrayList <InscripcionMateria> inscripcionesMateria;
+		private ArrayList<Materia> materia;
+		private ArrayList <InscripcionAmateria> inscripcionesMateria;
 
 		public Universidad(String nombre) {
 			this.nombre = nombre;
-			this.alumnos = new ArrayList<Alumno>();
-			this.materias = new ArrayList<>();
+			this.alumno = new ArrayList<Alumno>();
+			this.materia = new ArrayList<>();
 			this.inscripcionesMateria = new ArrayList<>();
 		}
 
 		public Boolean registrar(Alumno alumno) {
 
-			if (buscarAlumnoPorDni(alumno.getDni()) == null)
-			
-				return this.alumnos.add(alumno);
+			if (buscarAlumnoPorDni(alumno.getDni()) == null) {
+				this.alumno.add(alumno);
+				return true;
+			}
+				
 
 			return false;
 		}
 
-		public Alumno buscarAlumnoPorDni(Integer dni) {
+		public Alumno buscarAlumnoPorDni(Long dni) {
 
-			for (int i = 0; i < alumnos.size(); i++) {
-				if (this.alumnos.get(i).getDni().equals(dni))
-					return this.alumnos.get(i);
+			for (int i = 0; i < alumno.size(); i++) {
+				if (this.alumno.get(i).getDni().equals(dni))
+					return this.alumno.get(i);
 			}
 			
 			return null;
 		}
 
 		public Boolean existeAlumno(Integer dni) {
-			for (int i = 0; i < alumnos.size(); i++) {
-				if (this.alumnos.get(i).getDni().equals(dni))
+			for (int i = 0; i < alumno.size(); i++) {
+				if (this.alumno.get(i).getDni().equals(dni))
 					return true;
 			}
 			return false;
 		}
 
 		public Boolean registraMateria(Materia materia) {
-		   
-			return this.materias.add(materia);
+		     if (buscarMateriaPorCodigo(materia.getCodigoDeMateria())== null) {
+		    	 
+		    	 this.materia.add(materia);
+				   return true;
+			   }
+		     return false;
+				
+		   }
+				   
+		
+				
+		private Materia buscarMateriaPorCodigo(Integer codigo) {
+			for (int i = 0; i < this.materia.size(); i++) {
+				if (this.materia.get(i).getCodigoDeMateria().equals(codigo))
+					return this.materia.get(i);
+			}
+			return null;
 		}
+		
 
-		public boolean inscribirAlumnoAUnaMateria(Integer dni, Integer codigo) {
+		public boolean inscribirAlumnoAUnaMateria(Long dni, Integer codigo) {
 			
 			//no se puede inscribir alumnos si no tiene al menps cursada todas las correlativas(correlativas nota >=4)
 		
@@ -59,7 +77,7 @@ public class Universidad {
 			
 			if (alumno != null && materia != null) {
 				
-		    InscripcionMateria  inscripcionMateria = new InscripcionMateria (alumno,materia);
+		    InscripcionAmateria  inscripcionMateria = new InscripcionAmateria (alumno,materia);
 			return this.inscripcionesMateria.add(inscripcionMateria );
 				
 			}
@@ -67,13 +85,7 @@ public class Universidad {
 			return false;
 		}
 
-		private Materia buscarMateriaPorCodigo(Integer codigo) {
-			for (int i = 0; i < this.materias.size(); i++) {
-				if (this.materias.get(i).getCodigo().equals(codigo))
-					return this.materias.get(i);
-			}
-			return null;
-		}
+		
 		
 
 

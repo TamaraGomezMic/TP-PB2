@@ -12,7 +12,7 @@ public abstract class Persona {
 		
 		
 		//CONSTRUCTOR
-		public Persona(Integer legajo, Long dni, String nombre, String celular, String email, String apellido) {
+		public Persona(Integer legajo, Long dni, String nombre, String apellido, String celular, String email) {
 			this.setDni(dni);
 			this.nombre=nombre;
 			this.celular=celular;
@@ -37,14 +37,14 @@ public abstract class Persona {
 
 
 
-		public Long getCelular() {
+		public String getCelular() {
 			return celular;
 		}
 
 
 
 
-		public void setCelular(Long celular) {
+		public void setCelular(String celular) {
 			this.celular = celular;
 		}
 
@@ -65,14 +65,14 @@ public abstract class Persona {
 
 
 
-		public String getLegajo() {
+		public Integer getLegajo() {
 			return legajo;
 		}
 
 
 
 
-		public void setLegajo(String legajo) {
+		public void setLegajo(Integer legajo) {
 			this.legajo = legajo;
 		}
 
