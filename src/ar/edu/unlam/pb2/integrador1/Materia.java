@@ -1,20 +1,30 @@
 package ar.edu.unlam.pb2.integrador1;
 
+import java.util.ArrayList;
+
 public class Materia {
-	private Integer codigo;
-	private String nombre;
+
+	private Integer codigoDeMateria = 0;
+	private String nombre = "";
+	private ArrayList <Materia> correlativa;
 
 	public Materia(Integer codigo, String nombre) {
-	this.codigo =codigo;
-	this.nombre=nombre;
+	    this.codigoDeMateria = codigo;
+		this.nombre=nombre;
+		correlativa = new ArrayList <Materia>();
+		
 	}
-
-	public Integer getCodigo() {
-		return codigo;
+	
+	
+	public Integer getCodigoDeMateria() {
+		return codigoDeMateria;
 	}
+	
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+
+	public void setCodigoDeMateria(Integer codigoDeMateria) {
+			this.codigoDeMateria = codigoDeMateria;
+
 	}
 
 	public String getNombre() {
@@ -26,44 +36,18 @@ public class Materia {
 	}
 
 
-	private Integer codigoMateria;
-	private Integer nombreMateria;
+	public ArrayList<Materia> getCorrelativa() {
+		return correlativa;
+	}
+
+
+	public void setCorrelativa(ArrayList<Materia> correlativa) {
+		this.correlativa = correlativa;
+	}
+
 	
-	public Materia(Integer codigoMateria) {
-		this.codigoMateria = codigoMateria;
-	}
+
 	
-	public Materia(Integer codigo, String nombre) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Object getCodigo() {
-		
-		return null;
-	}
-
-
-
-	public Integer getCodigoMateria() {
-		return codigoMateria;
-	}
-
-
-
-	public void setCodigoMateria(Integer codigoMateria) {
-		this.codigoMateria = codigoMateria;
-	}
-
-	public Integer getNombreMateria() {
-		return nombreMateria;
-	}
-
-	public void setNombreMateria(Integer nombreMateria) {
-		this.nombreMateria = nombreMateria;
-	}
-	
-	
-	// no se puede asignar 2 materias con el mismo  id
 	
 	
 	
