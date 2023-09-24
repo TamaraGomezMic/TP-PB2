@@ -96,7 +96,7 @@ public class Universidad {
 		
 		//-----------DOCENTE-----------
 		
-		public Boolean CrearUnDocente(Profesor profesor) {
+		public Boolean crearUnDocente(Profesor profesor) {
 			if (buscarProfesorPorDni(profesor.getDni()) == null) {
 				this.profesor.add(profesor);
 				return true;

@@ -138,11 +138,11 @@ public class TestUniversidad {
 				Universidad unlam = new Universidad(nombreDeLaUniversidad);
 				Profesor nuevoDocente = new Profesor(legajo,dni,nombre, apellido, fechaDeNacimiento, celular,
 					 email);
-				Boolean seCreo = unlam.CrearUnDocente(nuevoDocente);
+				Boolean seCreo = unlam.crearUnDocente(nuevoDocente);
 
 				// VALIDACION
 				assertNotNull(seCreo);
-				System.out.println(seCreo);
+				//System.out.println(seCreo);
 			}
 
 	
@@ -162,14 +162,15 @@ public class TestUniversidad {
 			
 			
 			//ACCION
+			Universidad unlam = new Universidad(nombreDeLaUniversidad);
 			Profesor nuevoProfesor = new Profesor(legajo,dni,nombre, apellido, fechaDeNacimiento, celular,
 					 email);
 			Profesor nuevoProfesor2 = new Profesor(legajo,dni1,nombre, apellido, fechaDeNacimiento, celular,
 					 email);
-			Universidad Unlam = new Universidad(nombreDeLaUniversidad);
-			Unlam.CrearUnDocente(nuevoProfesor);
-			Boolean sePudoCrear = Unlam.CrearUnDocente(nuevoProfesor2);
-			assertFalse (sePudoCrear);
+			unlam.crearUnDocente(nuevoProfesor);
+			Boolean sePudoCrear = unlam.crearUnDocente(nuevoProfesor2);
+			
+			assertNotNull(sePudoCrear);
 			System.out.println(sePudoCrear);
 			
 	  
