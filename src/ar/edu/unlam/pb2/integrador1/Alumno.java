@@ -4,29 +4,27 @@ import java.time.LocalDate;
 
 
 
-
 public class Alumno extends Persona{
 	
 
+	
+	
 
 	//ATRIBUTOS
-	private Integer idAlumno;
-	private Long dniAlu;
-	private String nombreAlu;
-	private String apellidoAlu;
-	private LocalDate fechaDeNacimientoAlu;
 	private LocalDate fechaDeIngresoAlu;
-	private Long celular;
-	private String email;
+	
 	
 
 	//CONSTRUCTOR
+	public Alumno(Integer legajo, Long dni, String nombre, Long celular, String email, String apellido,
+			LocalDate fechaDeNacimiento,LocalDate fechaDeIngresoAlu) {
+		super(legajo, dni, nombre, celular, email, apellido, fechaDeNacimiento);
+		this.fechaDeIngresoAlu = fechaDeIngresoAlu;
+	}
+
 	
-	 public Alumno(Integer idAlumno, Long dniAlu, String nombreAlu, String apellidoAlu, LocalDate fechaDeNacimientoAlu,
-				LocalDate fechaDeIngresoAlu, Long celular, String email) {
-			super(idAlumno,dniAlu,nombreAlu,apellidoAlu,fechaDeNacimientoAlu,celular,email);
-			this.fechaDeIngresoAlu = fechaDeIngresoAlu;
-		}
+
+
 
 
 	//METODOS

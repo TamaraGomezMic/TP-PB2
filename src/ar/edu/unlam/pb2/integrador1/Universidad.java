@@ -5,18 +5,22 @@ import java.util.ArrayList;
 
 public class Universidad {
 	
-		private String nombre;
+		private String nombreUni;
 		private ArrayList<Alumno> alumno;
+		private ArrayList<Profesor> profesor;
 		private ArrayList<Materia> materia;
 		private ArrayList <InscripcionAmateria> inscripcionesMateria;
 
 		public Universidad(String nombre) {
-			this.nombre = nombre;
+			this.setNombreUni(nombre);
 			this.alumno = new ArrayList<Alumno>();
+			this.profesor = new ArrayList<Profesor>();
 			this.materia = new ArrayList<>();
 			this.inscripcionesMateria = new ArrayList<>();
 		}
 
+		
+		
 		public Boolean registrar(Alumno alumno) {
 
 
@@ -88,6 +92,75 @@ public class Universidad {
 			
 			return false;
 		}
+
+		
+		//-----------DOCENTE-----------
+		
+		public Boolean CrearUnDocente(Profesor profesor) {
+			if (buscarProfesorPorDni(profesor.getDni()) == null) {
+				this.profesor.add(profesor);
+				return true;
+			}
+			
+
+			return false;
+		}
+		
+		public Profesor buscarProfesorPorDni(Long dni) {
+
+
+			for (int i = 0; i < profesor.size(); i++) {
+				if (this.profesor.get(i).getDni().equals(dni))
+					return this.profesor.get(i);
+
+			}
+			
+			return null;
+		}
+		
+		public Boolean CrearNuevoDocente(Profesor nuevoProfesor, Boolean docente) {
+			
+			if (existeProfesor(nuevoProfesor.getDni()) == docente) {
+				this.profesor.add(nuevoProfesor);
+				return true;
+			}
+			
+			
+			return false;
+		}
+
+		
+		public Boolean existeProfesor(Long dni) {
+			for (int i = 0; i < profesor.size(); i++) {
+				if (this.profesor.get(i).getDni().equals(dni))
+
+					return true;
+			}
+			return null;
+		}
+		
+		
+		
+		
+		
+		
+
+		public String getNombreUni() {
+			return nombreUni;
+		}
+
+
+
+		public void setNombreUni(String nombreUni) {
+			this.nombreUni = nombreUni;
+		}
+
+
+
+		
+
+
+		
 
 
 

@@ -27,11 +27,12 @@ public class TestUniversidad {
     	
     	
     	Universidad unlam = new Universidad(nombreUniversidad);
-   		Alumno alumno = new Alumno(idAlumno, dni, nombre, apellido, fechaDeIngresoAlu, fechaDeIngresoAlu, celular, email);
+   		Alumno alumno = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
+   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
 	    	   	
 		Boolean registroExitoso = unlam.registrar(alumno);
     	assertTrue(registroExitoso);
-    	System.out.println(registroExitoso);
+    	//System.out.println(registroExitoso);
     	
 	}
 	
@@ -49,8 +50,10 @@ public class TestUniversidad {
 	    	
 	    	
 	    	Universidad unlam = new Universidad (nombreUniversidad);
-	    	Alumno alumno1 = new Alumno(idAlumno, dni, nombre, apellido, fechaDeIngresoAlu, fechaDeIngresoAlu, celular, email);
-	    	Alumno alumno2 = new Alumno(idAlumno, dni, nombre, apellido, fechaDeIngresoAlu, fechaDeIngresoAlu, celular, email);
+	    	Alumno alumno1 = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
+	   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
+	    	Alumno alumno2 = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
+	   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
 	
 	   		
 	   		unlam.registrar(alumno1);	   		  	
@@ -90,6 +93,91 @@ public class TestUniversidad {
     	       
 	}
 	
+	//////////////////
+	
+	/*@Test
+	public void queSePuedaInscribirUnAlumnoenMateria() { //es proceso
+		String  nombreUniversidad = "Unlam";
+     	String nombre = "Marta";
+    	String apellido = "perez";
+    	Long dni= 44555897L; 
+    	Integer idAlumno = 1;
+    	Long celular = 1566655848L;
+    	String email = "martaPerez@unlam.edu.ar";
+    	LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+     	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+     
+    	
+    	Universidad unlam = new Universidad (nombreUniversidad);
+    	Alumno alumno1 = new Alumno(idAlumno, dni, nombre, apellido, fechaDeNacimientoAlu, fechaDeIngresoAlu, celular, email);
+    	unlam.registrar(alumno1);
+        
+        assertTrue(unlam.inscribirAlumnoAUnaMateria(dni,idAlumno)) ;
+	
+	}*/
+
+	///////////////////////
+	
+	
+	//docente
+	
+		@Test
+		public void queSePuedaCrearUnDocente() {
+			
+				// PREPARACION
+			String nombreDeLaUniversidad = "Unlam";
+				Long dni = 37246801L;
+				String nombre = "lucas";
+				Long celular = 1123451234L;
+				String email = "lucasbarrios@alumno.edu.ar";
+				Integer legajo = 333;
+				String apellido = "Barrios";
+				LocalDate fechaDeNacimiento=LocalDate.of(2003, 01, 03);
+
+				// ACCION
+				Universidad unlam = new Universidad(nombreDeLaUniversidad);
+				Profesor nuevoDocente = new Profesor(legajo,dni,nombre, apellido, fechaDeNacimiento, celular,
+					 email);
+				Boolean seCreo = unlam.CrearUnDocente(nuevoDocente);
+
+				// VALIDACION
+				assertNotNull(seCreo);
+				System.out.println(seCreo);
+			}
+
+	
+		@Test
+		public void queNoSePuedaRegistrarDosDocentesConElMismoDni() {
+			String nombreDeLaUniversidad = "Unlam";
+			
+			Long dni = 37246801L;
+			String nombre = "lucas";
+			Long celular = 1123451234L;
+			String email = "lucasbarrios@alumno.edu.ar";
+			Integer legajo = 333;
+			String apellido = "Barrios";
+			LocalDate fechaDeNacimiento=LocalDate.of(2003, 01, 03);
+
+			Long dni1 = 37233801L;
+			
+			
+			//ACCION
+			Profesor nuevoProfesor = new Profesor(legajo,dni,nombre, apellido, fechaDeNacimiento, celular,
+					 email);
+			Profesor nuevoProfesor2 = new Profesor(legajo,dni1,nombre, apellido, fechaDeNacimiento, celular,
+					 email);
+			Universidad Unlam = new Universidad(nombreDeLaUniversidad);
+			Unlam.CrearUnDocente(nuevoProfesor);
+			Boolean sePudoCrear = Unlam.CrearUnDocente(nuevoProfesor2);
+			assertFalse (sePudoCrear);
+			System.out.println(sePudoCrear);
+			
+	  
+		}
+	
+	
+	
+	
 	
 	@Test
 
@@ -101,7 +189,7 @@ public class TestUniversidad {
 	
 	}
 	
-	@Test
+	/*@Test
 	public void queSePuedaIngresaUnaCorrelativa() { // este estoy haciendo//
 		
 		 	String nombre = "Desarrollo Web";
@@ -139,36 +227,14 @@ public class TestUniversidad {
 		
 	}
 	
-	//docente
 	
-	@Test
-	public void queSePuedaRegistrarUnDocente() {
-		
-	}
 	
 	@Test
 	// verificar que el alumno y el curso esten dado de alta
 	public void queSePuedaInscribirAlumnoAunCurso() {
 		
-	}
+	}*/
 	
-	
-//	@Test
-//	public void queSePuedaInscribirUnAlumnoenMateria() {
-//		 String  nombre = "Unlam";
-//    	Universidad unlam = new Universidad (nombre);
-//    	nombre = "PB2 ";
-//        Integer codigo = 1;
-//        Materia pb2 = new Materia (codigo,nombre);
-//        unlam.registraMateria(pb2);
-//     	nombre = "Marta";
-//    	String apellido = "perez";
-//    	Integer dni= 44555; 
-//        Alumno alumno = new Alumno(dni,apellido, nombre);
-//    	unlam.registrar(alumno);
-//    	assertTrue (unlam.inscribirAlumnoAUnaMateria(dni,codigo)) ;
-//    	       
-//	}
 	
 	
 	

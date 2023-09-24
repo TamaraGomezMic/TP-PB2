@@ -11,7 +11,6 @@ public class InscripcionAmateria {
 
 	public InscripcionAmateria(Alumno alumno, Materia materia) {
 		
-		
 		this.alumno=alumno;
 		this.materia = materia;
 	}

@@ -10,21 +10,20 @@ public abstract class Persona {
 		private String email;
 		private Integer legajo;
 		private String apellido;
-		private LocalDate fechaDeNacimientoAlu;
+		private LocalDate fechaDeNacimiento;
 		
 		
 		
 		
 		//CONSTRUCTOR
-		public Persona(Integer legajo, Long dni, String nombre, String apellido, LocalDate fechaDeNacimientoAlu,
-		 Long celular, String email) {
+		public Persona(Integer legajo, Long dni, String nombre, Long celular, String email, String apellido, LocalDate fechaDeNacimiento) {
 			this.setDni(dni);
 			this.nombre=nombre;
 			this.celular=celular;
 			this.email=email;
 			this.legajo=legajo;
 			this.apellido=apellido;		
-			this.fechaDeNacimientoAlu = fechaDeNacimientoAlu;
+			this.fechaDeNacimiento = fechaDeNacimiento;
 		}
 
 
@@ -116,14 +115,14 @@ public abstract class Persona {
 
 
 
-		public LocalDate getFechaDeNacimientoAlu() {
-			return fechaDeNacimientoAlu;
+		public LocalDate getFechaDeNacimiento() {
+			return fechaDeNacimiento;
 		}
 
 
 
 		public void setFechaDeNacimientoAlu(LocalDate fechaDeNacimientoAlu) {
-			this.fechaDeNacimientoAlu = fechaDeNacimientoAlu;
+			this.fechaDeNacimiento = fechaDeNacimientoAlu;
 		}
 
 	
