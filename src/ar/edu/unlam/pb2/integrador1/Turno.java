@@ -11,12 +11,9 @@ public class Turno {
 	private Aula aula;
 	private List<RegistroDeNotaExamenes> registroDeNota;
 	
-	public Turno(Comision idComision,Materia materia,CicloLectivo ciclo,Aula aula, String turno) {
-		this.materia=materia;
-		this.setIdComision(idComision);
-		this.ciclo=ciclo;
+	public Turno(String turno) {
 		this.turno = turno;
-		this.aula=aula;
+		
 	}
 
 	

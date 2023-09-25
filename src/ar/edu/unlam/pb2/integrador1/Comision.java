@@ -5,22 +5,20 @@ import java.util.Objects;
 
 public class Comision {
 	
-	private Integer idComision;
 	private Materia materia;
 	private CicloLectivo ciclo;
-	private String turno;
-	private Integer nroAula;
+	private Turno turno;
+	private Aula aula;
+	private Integer idComision;
 	private List<RegistroDeNotaExamenes> registroDeNota;
 	
 	
 	
 
-	public Comision(Integer nroAula, Materia materia, CicloLectivo ciclo, Integer idComision, String turno) {
-		this.setNroAula(nroAula);
-		this.materia=materia;
+	public Comision(Integer idComision) {
+		
 		this.idComision=idComision;
-		this.ciclo=ciclo;
-		this.turno=turno;
+		
 	}
 
 
@@ -69,17 +67,19 @@ public class Comision {
 
 
 
-
-	public String getTurno() {
-		return turno;
+	public Aula getAula() {
+		return aula;
 	}
 
 
 
 
-	public void setTurno(String turno) {
-		this.turno = turno;
+	public void setAula(Aula aula) {
+		this.aula = aula;
 	}
+
+
+	
 
 	
 	@Override
@@ -104,21 +104,7 @@ public class Comision {
 
 
 
-	public Integer getNroAula() {
-		return nroAula;
-	}
 
-
-
-
-	public void setNroAula(Integer nroAula) {
-		this.nroAula = nroAula;
-	}
-
-
-
-
-	
 
 
 

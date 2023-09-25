@@ -175,8 +175,39 @@ public class TestUniversidad {
 			
 	  
 		}
+		
 	
-	
+		//El mismo docente no puede ser profesor de la misma comisión 2 veces.
+		@Test
+		public void queSePuedaAsignarDocentesAComision() { //en proceso
+			String nombreDeLaUniversidad = "Unlam";
+			
+			Long dni = 37246801L;
+			String nombre = "lucas";
+			Long celular = 1123451234L;
+			String email = "lucasbarrios@alumno.edu.ar";
+			Integer legajo = 333;
+			String apellido = "Barrios";
+			LocalDate fechaDeNacimiento=LocalDate.of(2003, 01, 03);
+			Integer idComision = 2343;
+			
+			
+			//ACCION
+			Universidad unlam = new Universidad(nombreDeLaUniversidad);
+			Profesor nuevoProfesor = new Profesor(legajo,dni,nombre, apellido, fechaDeNacimiento, celular,email);
+			Comision comision = new Comision( idComision);
+			
+			
+			//unlam.crearUnDocente(nuevoProfesor);
+			unlam.crearUnDocente(nuevoProfesor);
+			unlam.crearUnaComision(comision);
+			
+			Boolean sePudoCrear = unlam.asignarDocentesAComision(idComision, legajo);
+			assertNotNull(sePudoCrear);
+			//System.out.println(sePudoCrear);
+			
+	  
+		}
 	
 	
 	
@@ -219,10 +250,12 @@ public class TestUniversidad {
 		Integer idCiclo = 9433;
 		String turno = "m";
 		Integer idCiclo1 = 9423;
+		LocalDate inicioRangoCiclo=LocalDate.of(2003, 03, 03);
+		LocalDate finRangoCiclo=LocalDate.of(2003, 07, 03);
 		//ACCION
 		Universidad unlam = new Universidad(nombreUni);
-		CicloLectivo ciclo = new CicloLectivo(idCiclo, turno);
-		CicloLectivo ciclo1 = new CicloLectivo(idCiclo1, turno);
+		CicloLectivo ciclo = new CicloLectivo(idCiclo, inicioRangoCiclo, finRangoCiclo);
+		CicloLectivo ciclo1 = new CicloLectivo(idCiclo1, inicioRangoCiclo, finRangoCiclo);
 		
 		
 		unlam.agregarCicloLectivo(ciclo);
@@ -230,7 +263,7 @@ public class TestUniversidad {
 		
 		
 		assertNotNull(sePudoCrear);
-		System.out.println(sePudoCrear);
+		//System.out.println(sePudoCrear);
 		
 		
 	}
@@ -250,23 +283,26 @@ public class TestUniversidad {
 		Integer idCiclo = 9433;
 		String turno = "m";
 		Integer nroAula = 3232;
+		LocalDate inicioRangoCiclo=LocalDate.of(2003, 03, 03);
+		LocalDate finRangoCiclo=LocalDate.of(2003, 07, 03);
+		
 		//ACCION
 		Universidad unlam = new Universidad(nombreUni);
 		Materia materia = new Materia(codigoMateria, nombreMateria);
-		CicloLectivo ciclo = new CicloLectivo(idCiclo, turno);
-		Comision comision = new Comision(nroAula, materia, ciclo, idComision, turno);
+		CicloLectivo ciclo = new CicloLectivo(idCiclo, inicioRangoCiclo, finRangoCiclo);
+		Comision comision = new Comision( idComision);
 		
 		
 		unlam.registraMateria(materia);
 		unlam.agregarCicloLectivo(ciclo);
-		
-		Boolean materiaCreada =unlam.asignarCicloLectivoyTurnoAMateria(codigoMateria, idCiclo, turno);
-		
-		//Boolean sePudoCrear = unlam.crearUnaComision(idComision);
+		Boolean sePudoCrear = unlam.crearUnaComision(comision);
+		//Boolean materiaCreada =unlam.asignarCicloLectivoyTurnoAMateria(codigoMateria, idCiclo, turno);
 		
 		
-		assertNotNull(materiaCreada);
-		System.out.println(materiaCreada);
+		
+		
+		assertNotNull(sePudoCrear);
+		System.out.println(sePudoCrear);
 		
 	}
 	
