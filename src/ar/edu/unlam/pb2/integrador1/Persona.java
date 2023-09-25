@@ -1,6 +1,9 @@
 package ar.edu.unlam.pb2.integrador1;
 
 import java.time.LocalDate;
+import java.util.Objects;
+
+
 
 public abstract class Persona {
 	//ATRIBUTOS
@@ -127,7 +130,26 @@ public abstract class Persona {
 
 	
 
+		// selecciono por que parametro voy a comparar (legajo)
 
+		@Override
+		public int hashCode() {
+			return Objects.hash(legajo);
+		}
+
+
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Persona other = (Persona) obj;
+			return Objects.equals(legajo, other.legajo);
+		}
 
 		
 }

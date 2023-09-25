@@ -2,8 +2,7 @@ package ar.edu.unlam.pb2.integrador1;
 
 import java.util.ArrayList;
 
-import ar.edu.unlam.academia.grupo6.Alumno;
-import ar.edu.unlam.academia.grupo6.Curso;
+
 
 
 public class Universidad {
@@ -144,20 +143,25 @@ public class Universidad {
 		
 		//No se Pueden generar 2 Comisiones para la misma materia, 
 		//el mismo cicloLectivo y el mismo turno
-		public Boolean crearUnaComision(Materia materia, CicloLectivo ciclo, Comision comision) {
-			if (buscarMateriaPorCodigo(materia.getCodigoDeMateria()) == null) {
-				if (buscarMateriaPorCodigo(ciclo.getIdCiclo()) == null) {
-					
-						this.comision.add(comision);
-						
-						return true;
-					}
-					
+		public Boolean crearUnaComision(Comision comision) {
+							
+			if (buscarComisionPorId(comision.getIdComision()) == null) {
+				this.comision.add(comision);
+				return true;
 				
 			}
 			
-			
-			
+			return false;
+		}
+		
+		public Comision buscarComisionPorId(Integer idComision) {
+
+
+			for (int i = 0; i < comision.size(); i++) {
+				if (this.comision.get(i).getIdComision().equals(idComision))
+					return this.comision.get(i);
+
+			}
 			
 			return null;
 		}
@@ -190,13 +194,14 @@ public class Universidad {
 
 
 
-
+		//--en proceso
 		public Boolean asignarCicloLectivoyTurnoAMateria(Integer codigoMateria, Integer idCiclo, String turno) {
 			Boolean sePuedoAsignar = false;
 			Materia materia =  buscarMateriaPorCodigo(codigoMateria);
 			CicloLectivo ciclo = buscarCicloPorID(idCiclo);
 			
 			materia.agregarCicloLectivo(ciclo);
+			materia.agregarTurno(turno);
 			ciclo.agreagarUnMateriaAlCiclo(materia);
 			
 			
@@ -217,7 +222,7 @@ public class Universidad {
 		
 
 
-
+		
 
 
 

@@ -6,8 +6,8 @@ public class Aula {
 	
 
 	public Aula(Integer nroAula, Integer capacidadMaxima) {
-	this.setNroAula(nroAula);
-	this.setCapacidadMaxima(capacidadMaxima);
+	this.nroAula = nroAula;
+	this.capacidadMaxima=capacidadMaxima;
 	
 	}
 

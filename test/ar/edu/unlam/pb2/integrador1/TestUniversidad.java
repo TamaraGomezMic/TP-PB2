@@ -249,11 +249,12 @@ public class TestUniversidad {
 		Integer idComision = 2343;
 		Integer idCiclo = 9433;
 		String turno = "m";
+		Integer nroAula = 3232;
 		//ACCION
 		Universidad unlam = new Universidad(nombreUni);
 		Materia materia = new Materia(codigoMateria, nombreMateria);
 		CicloLectivo ciclo = new CicloLectivo(idCiclo, turno);
-		Comision comision = new Comision(idComision);
+		Comision comision = new Comision(nroAula, materia, ciclo, idComision, turno);
 		
 		
 		unlam.registraMateria(materia);
@@ -261,7 +262,7 @@ public class TestUniversidad {
 		
 		Boolean materiaCreada =unlam.asignarCicloLectivoyTurnoAMateria(codigoMateria, idCiclo, turno);
 		
-		//Boolean sePudoCrear = unlam.crearUnaComision(materia, ciclo, comision);
+		//Boolean sePudoCrear = unlam.crearUnaComision(idComision);
 		
 		
 		assertNotNull(materiaCreada);

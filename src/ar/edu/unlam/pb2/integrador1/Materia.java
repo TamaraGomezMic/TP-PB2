@@ -72,6 +72,12 @@ public class Materia {
 	public int hashCode() {
 		return Objects.hash(codigoDeMateria);
 	}
+
+
+	public void agregarTurno(String turno) {
+		
+		
+	}
 	
 	
 
