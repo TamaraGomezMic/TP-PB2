@@ -4,14 +4,7 @@ import java.time.LocalDate;
 
 public class Profesor extends Persona{
 
-	
-	//ATRIBUTOS
-		/*private Long dniProf;
-		private String nombreProf;
-		private String apellidoProf;
-		private LocalDate fechaDeNacimientoProf;*/
-			
-	    
+
 
 		//CONSTRUCTOR
 		

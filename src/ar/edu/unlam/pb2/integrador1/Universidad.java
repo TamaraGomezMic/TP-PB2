@@ -2,6 +2,9 @@ package ar.edu.unlam.pb2.integrador1;
 
 import java.util.ArrayList;
 
+import ar.edu.unlam.academia.grupo6.Alumno;
+import ar.edu.unlam.academia.grupo6.Curso;
+
 
 public class Universidad {
 	
@@ -10,6 +13,8 @@ public class Universidad {
 		private ArrayList<Profesor> profesor;
 		private ArrayList<Materia> materia;
 		private ArrayList <InscripcionAmateria> inscripcionesMateria;
+		private ArrayList<Comision> comision;
+		private ArrayList<CicloLectivo> cicloLectivo;
 
 		public Universidad(String nombre) {
 			this.setNombreUni(nombre);
@@ -17,9 +22,24 @@ public class Universidad {
 			this.profesor = new ArrayList<Profesor>();
 			this.materia = new ArrayList<>();
 			this.inscripcionesMateria = new ArrayList<>();
+			this.comision = new ArrayList<Comision>();
+			this.cicloLectivo = new ArrayList<CicloLectivo>();
+		}
+
+
+		public String getNombreUni() {
+			return nombreUni;
+		}
+
+
+
+		public void setNombreUni(String nombreUni) {
+			this.nombreUni = nombreUni;
 		}
 
 		
+		
+		//------------ ALUMNO -----------
 		
 		public Boolean registrar(Alumno alumno) {
 
@@ -118,43 +138,95 @@ public class Universidad {
 			return null;
 		}
 		
-		public Boolean CrearNuevoDocente(Profesor nuevoProfesor, Boolean docente) {
-			
-			if (existeProfesor(nuevoProfesor.getDni()) == docente) {
-				this.profesor.add(nuevoProfesor);
-				return true;
-			}
-			
-			
-			return false;
-		}
-
 		
-		public Boolean existeProfesor(Long dni) {
-			for (int i = 0; i < profesor.size(); i++) {
-				if (this.profesor.get(i).getDni().equals(dni))
-
-					return true;
+		
+		// ------- COMISION---------
+		
+		//No se Pueden generar 2 Comisiones para la misma materia, 
+		//el mismo cicloLectivo y el mismo turno
+		public Boolean crearUnaComision(Materia materia, CicloLectivo ciclo, Comision comision) {
+			if (buscarMateriaPorCodigo(materia.getCodigoDeMateria()) == null) {
+				if (buscarMateriaPorCodigo(ciclo.getIdCiclo()) == null) {
+					
+						this.comision.add(comision);
+						
+						return true;
+					}
+					
+				
 			}
+			
+			
+			
+			
 			return null;
 		}
 		
 		
-		
-		
-		
+		//No se puede asignar 2 ciclos Lectivo con mismo Id 
+		//y no se pueden superponer los rangos de fechas entre 2 ciclos distintos
+		public Boolean agregarCicloLectivo(CicloLectivo ciclo) {
+			if (buscarCicloPorID(ciclo.getIdCiclo()) == null) {
+				this.cicloLectivo.add(ciclo);
+				return true;
+			}
+			
+
+			return false;
+			
+		}// faltan validar las fechas
 		
 
-		public String getNombreUni() {
-			return nombreUni;
+		public CicloLectivo buscarCicloPorID(Integer idCiclo) {
+			
+			for (int i = 0; i < cicloLectivo.size(); i++) {
+				if (this.cicloLectivo.get(i).getIdCiclo().equals(idCiclo))
+					return this.cicloLectivo.get(i);
+
+			}
+			
+			return null;
 		}
 
 
 
-		public void setNombreUni(String nombreUni) {
-			this.nombreUni = nombreUni;
+
+		public Boolean asignarCicloLectivoyTurnoAMateria(Integer codigoMateria, Integer idCiclo, String turno) {
+			Boolean sePuedoAsignar = false;
+			Materia materia =  buscarMateriaPorCodigo(codigoMateria);
+			CicloLectivo ciclo = buscarCicloPorID(idCiclo);
+			
+			materia.agregarCicloLectivo(ciclo);
+			ciclo.agreagarUnMateriaAlCiclo(materia);
+			
+			
+			return null;
 		}
 
+		/*
+		
+
+		if (curso.mostrarALumno().equals(alumno)) {
+			alumno.agregarUnCurso(Legajo);
+			return sePuedoInscribir = true;
+		} 
+
+		
+		*/
+		
+		
+
+
+
+
+
+
+
+		
+
+
+
+		
 
 
 		

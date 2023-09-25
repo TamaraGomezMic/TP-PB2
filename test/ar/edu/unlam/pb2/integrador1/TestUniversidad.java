@@ -122,7 +122,7 @@ public class TestUniversidad {
 	//docente
 	
 		@Test
-		public void queSePuedaCrearUnDocente() {
+		public void queSePuedaCrearUnDocente() { //andaa
 			
 				// PREPARACION
 			String nombreDeLaUniversidad = "Unlam";
@@ -147,7 +147,7 @@ public class TestUniversidad {
 
 	
 		@Test
-		public void queNoSePuedaRegistrarDosDocentesConElMismoDni() {
+		public void queNoSePuedaRegistrarDosDocentesConElMismoDni() { //andaa
 			String nombreDeLaUniversidad = "Unlam";
 			
 			Long dni = 37246801L;
@@ -171,7 +171,7 @@ public class TestUniversidad {
 			Boolean sePudoCrear = unlam.crearUnDocente(nuevoProfesor2);
 			
 			assertNotNull(sePudoCrear);
-			System.out.println(sePudoCrear);
+			//System.out.println(sePudoCrear);
 			
 	  
 		}
@@ -207,20 +207,69 @@ public class TestUniversidad {
 >>>>>>> manrique
 	}
 	
+	*
+	*
+	*/
+	
+	
 	//ciclo lectivo  id, fechaDeInicioDeCicloLectivo,fechaFinalizacionCicloLectivo, fechaInicioInscripcion,fechaFinalizacionInscripcion
 	@Test
-	public void queSePuedaCrearUnCicloLectivo() {
+	public void queSePuedaCrearUnCicloLectivo() {  //FALTAN LAS FECHAS
+		String nombreUni = "unlam";
+		Integer idCiclo = 9433;
+		String turno = "m";
+		Integer idCiclo1 = 9423;
+		//ACCION
+		Universidad unlam = new Universidad(nombreUni);
+		CicloLectivo ciclo = new CicloLectivo(idCiclo, turno);
+		CicloLectivo ciclo1 = new CicloLectivo(idCiclo1, turno);
+		
+		
+		unlam.agregarCicloLectivo(ciclo);
+		Boolean sePudoCrear =unlam.agregarCicloLectivo(ciclo1);
+		
+		
+		assertNotNull(sePudoCrear);
+		System.out.println(sePudoCrear);
+		
 		
 	}
 	 
 		
+		
 	// comision id,Materia,CicloLectivo, turno
 	// que se pueda crear un curso 
 	// PARA MI EN COMISION DEBERIAMOS AGREGAR EL AULA QUE SE ASIGNA DEPENDIENDO LA CANTIDAD DE ALUMNOS
+	
 	@Test
-	public void queSePuedaCrearUnaComision() {
+	public void queSePuedaCrearUnaComision() {  //en proceso
+		String nombreUni = "unlam";
+		String nombreMateria = "pb2";
+		Integer codigoMateria = 4324;
+		Integer idComision = 2343;
+		Integer idCiclo = 9433;
+		String turno = "m";
+		//ACCION
+		Universidad unlam = new Universidad(nombreUni);
+		Materia materia = new Materia(codigoMateria, nombreMateria);
+		CicloLectivo ciclo = new CicloLectivo(idCiclo, turno);
+		Comision comision = new Comision(idComision);
+		
+		
+		unlam.registraMateria(materia);
+		unlam.agregarCicloLectivo(ciclo);
+		
+		Boolean materiaCreada =unlam.asignarCicloLectivoyTurnoAMateria(codigoMateria, idCiclo, turno);
+		
+		//Boolean sePudoCrear = unlam.crearUnaComision(materia, ciclo, comision);
+		
+		
+		assertNotNull(materiaCreada);
+		System.out.println(materiaCreada);
 		
 	}
+	
+	/*
 	
 	// Aula id, cantidadDeAlumnos
 	@Test
