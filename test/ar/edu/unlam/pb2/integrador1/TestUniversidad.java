@@ -308,7 +308,7 @@ public class TestUniversidad {
 	
 	//ciclo lectivo  id, fechaDeInicioDeCicloLectivo,fechaFinalizacionCicloLectivo, fechaInicioInscripcion,fechaFinalizacionInscripcion
 	@Test
-	public void queSePuedaCrearUnCicloLectivo() {  //FALTAN LAS FECHAS
+	public void queSePuedaCrearUnCicloLectivo() {  //andaa
 		String nombreUni = "unlam";
 		Integer idCiclo = 9433;
 		Integer idCiclo1 = 9423;
@@ -328,7 +328,7 @@ public class TestUniversidad {
 		
 		
 		assertNotNull(sePudoCrear);
-		System.out.println(sePudoCrear);
+		//System.out.println(sePudoCrear);
 		
 		
 	}
@@ -338,7 +338,20 @@ public class TestUniversidad {
 	
 	// Aula id, cantidadDeAlumnos
 	@Test
-	public void queSePuedaAsignarUnAula() {
+	public void queSePuedaCrearUnAula() {
+		String nombreUni = "unlam";
+		Integer nroAula = 42343;
+		Integer capacidadMaxima= 60;
+		
+		//ACCION
+		Universidad unlam = new Universidad(nombreUni);
+		Aula aula = new Aula(nroAula, capacidadMaxima);
+		
+		Boolean sePudoCrear =unlam.crearAula(aula);
+		assertNotNull(sePudoCrear);
+		System.out.println(sePudoCrear);
+		
+		
 		
 	}
 	
