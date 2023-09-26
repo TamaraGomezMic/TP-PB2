@@ -21,6 +21,12 @@ public class Alumno extends Persona{
 		super(legajo, dni, nombre, celular, email, apellido, fechaDeNacimiento);
 		this.fechaDeIngresoAlu = fechaDeIngresoAlu;
 	}
+	
+	public Alumno(Integer legajo, Long dni, String nombre, String apellido) {
+		super(legajo, dni, nombre,  apellido);
+		
+	}
+	
 
 	
 

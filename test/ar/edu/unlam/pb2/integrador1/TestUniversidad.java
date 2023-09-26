@@ -13,6 +13,112 @@ import org.junit.Test;
 public class TestUniversidad {
 	
 	
+	String nombre1 = "Maria";
+	String apellido1 = "perez";
+	Long dni1= 44565897L;	
+	Integer idAlumno1 = 1;
+	
+	String nombre2 = "Marta";
+	String apellido2 = "posil";
+	Long dni2= 44555891L;	
+	Integer idAlumno2 = 2;
+	
+	String nombre3 = "Mariela";
+	String apellido3 = "pereziz";
+	Long dni3= 44555297L;	
+	Integer idAlumno3 = 3;
+	
+	String nombre4 = "lucas";
+	String apellido4 = "ortiz";
+	Long dni4= 44555837L;	
+	Integer idAlumno4 = 4;
+	
+	String nombre5 = "claudio";
+	String apellido5 = "pez";
+	Long dni5= 44555847L;	
+	Integer idAlumno5 = 5;
+	
+	String nombre6 = "blas";
+	String apellido6 = "diez";
+	Long dni6= 44555857L;	
+	Integer idAlumno6 = 6;
+	
+	String nombre7 = "ada";
+	String apellido7 = "bolpe";
+	Long dni7= 44555867L;	
+	Integer idAlumno7 = 7;
+	
+	String nombre8 = "luisa";
+	String apellido8 = "reita";
+	Long dni8= 44555797L;	
+	Integer idAlumno8 = 8;
+	
+	String nombre9 = "camila";
+	String apellido9 = "perez";
+	Long dni9= 44555887L;	
+	Integer idAlumno9 = 9;
+	
+	String nombre10 = "cristian";
+	String apellido11 = "golaz";
+	Long dni11= 44556897L;	
+	Integer idAlumno11 = 11;
+	
+	String nombre12 = "pablo";
+	String apellido12 = "til";
+	Long dni12= 44557897L;	
+	Integer idAlumno = 12;
+	
+	String nombre13 = "roman";
+	String apellido13 = "riquelme";
+	Long dni13= 44554897L;	
+	Integer idAlumno13 = 13;
+	
+	String nombre14 = "Martin";
+	String apellido14 = "palermo";
+	Long dni14= 44535897L;	
+	Integer idAlumno14 = 14;
+	
+	String nombre15 = "carlos";
+	String apellido15 = "tevez";
+	Long dni15= 44525897L;	
+	Integer idAlumno15 = 15;
+	
+	String nombre16 = "marcos";
+	String apellido16 = "rojo";
+	Long dni16= 44515897L;	
+	Integer idAlumno16 = 16;
+	
+	String nombre17 = "lita";
+	String apellido17 = "garcia";
+	Long dni17= 44550897L;	
+	Integer idAlumno17 = 17;
+	
+	String nombre18 = "anto";
+	String apellido18 = "casa";
+	Long dni18= 44555097L;	
+	Integer idAlumno18 = 18;
+	
+	String nombre19 = "noemi";
+	String apellido19 = "tarin";
+	Long dni19= 40655897L;	
+	Integer idAlumno19 = 19;
+	
+	String nombre20 = "romina";
+	String apellido20 = "maños";
+	Long dni20= 44555893L;	
+	Integer idAlumno20 = 20;
+	
+	String nombre21 = "carla";
+	String apellido21 = "conte";
+	Long dni21= 44455897L;	
+	Integer idAlumno21 = 21;
+	
+	String nombre22 = "susana";
+	String apellido22 = "gimenez";
+	Long dni22= 34555897L;	
+	Integer idAlumno22 = 22;
+	
+	
 	@Test  
 	public void queSePuedaRegistrarUnAlumnoAUnaUniversidad() { //anda//
 		String  nombreUniversidad = "Unlam";
@@ -266,8 +372,6 @@ public class TestUniversidad {
 		}
 		
 		
-		//El mismo docente no puede ser profesor de la misma comisión 2 veces.
-		
 		@Test
 		public void queSePuedaAsignarDocenteAComision() { //anda
 			String nombreDeLaUniversidad = "Unlam";
@@ -336,33 +440,8 @@ public class TestUniversidad {
 	  
 		}
 	
-	@Test
 
-	public void queSePuedaCrearUnPlanDeEstudio() { // anda ***
-		String nombre = "Desarrollo Web";
-		
-		PlanDeEstudio Tecnicatura = new PlanDeEstudio(nombre);
-		assertNotNull(Tecnicatura);
-	
-	}
-	
-	/*@Test
-	public void queSePuedaIngresaUnaCorrelativa() { // este estoy haciendo//
-		
-		 	String nombre = "Desarrollo Web";
-	    	String nombreMateria = "PB2";
-	    	Integer codigo = 2;
-	        
-	        
-	        Materia pb2 = new Materia(codigo,nombreMateria);
-			PlanDeEstudio Tecnicatura = new PlanDeEstudio(nombre);
-		
-		assertNotNull(Tecnicatura);
-		
-		
 
-	*
-	*/
 	
 	
 	//ciclo lectivo  id, fechaDeInicioDeCicloLectivo,fechaFinalizacionCicloLectivo, fechaInicioInscripcion,fechaFinalizacionInscripcion

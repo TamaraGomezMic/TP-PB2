@@ -28,6 +28,16 @@ public abstract class Persona {
 			this.apellido=apellido;		
 			this.fechaDeNacimiento = fechaDeNacimiento;
 		}
+		
+		public Persona(Integer legajo, Long dni, String nombre, String apellido) {
+			this.setDni(dni);
+			this.nombre=nombre;
+			this.legajo=legajo;
+			this.apellido=apellido;		
+			
+		}
+		
+		
 
 
 
