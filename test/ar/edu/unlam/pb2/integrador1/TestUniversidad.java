@@ -93,33 +93,8 @@ public class TestUniversidad {
     	       
 	}
 	
-	//////////////////
 	
-	/*@Test
-	public void queSePuedaInscribirUnAlumnoenMateria() { //es proceso
-		String  nombreUniversidad = "Unlam";
-     	String nombre = "Marta";
-    	String apellido = "perez";
-    	Long dni= 44555897L; 
-    	Integer idAlumno = 1;
-    	Long celular = 1566655848L;
-    	String email = "martaPerez@unlam.edu.ar";
-    	LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
-     	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
-     
-    	
-    	Universidad unlam = new Universidad (nombreUniversidad);
-    	Alumno alumno1 = new Alumno(idAlumno, dni, nombre, apellido, fechaDeNacimientoAlu, fechaDeIngresoAlu, celular, email);
-    	unlam.registrar(alumno1);
-        
-        assertTrue(unlam.inscribirAlumnoAUnaMateria(dni,idAlumno)) ;
-	
-	}*/
-
-	///////////////////////
-	
-	
-	//docente
+		//docente
 	
 		@Test
 		public void queSePuedaCrearUnDocente() { //andaa
@@ -145,8 +120,7 @@ public class TestUniversidad {
 				//System.out.println(seCreo);
 			}
 
-	
-		@Test
+			@Test
 		public void queNoSePuedaRegistrarDosDocentesConElMismoDni() { //andaa
 			String nombreDeLaUniversidad = "Unlam";
 			
@@ -176,17 +150,109 @@ public class TestUniversidad {
 	  
 		}
 		
+			//comision
+		@Test
+		public void queSePuedaCrearUnaComision() {  //anda
+			String nombreUni = "unlam";
+
+			Integer idComision = 2343;
+
+			
+
+			
+			//ACCION
+			Universidad unlam = new Universidad(nombreUni);
+			Comision comision = new Comision( idComision);
+
+			Boolean sePudoCrear = unlam.crearUnaComision(comision);
+		
+								
+			assertNotNull(sePudoCrear);
+			System.out.println(sePudoCrear);
+			
+		}		
+		
+		@Test
+		public void queSePuedaAsignarUnaMateriaAunaComision() {  //anda
+			String nombreUni = "unlam";
+			String nombreMateria = "pb2";
+			Integer codigoMateria = 4324;
+			Integer idComision = 2343;
+
+			
+			//ACCION
+			Universidad unlam = new Universidad(nombreUni);
+			Materia materia = new Materia(codigoMateria, nombreMateria);
+
+			Comision comision = new Comision( idComision);
+
+			
+			
+			unlam.registraMateria(materia);
+
+			unlam.crearUnaComision(comision);
+			Boolean registro = unlam.asignarMateriaAunaComision(idComision,codigoMateria);
+			
+			assertTrue(registro);
+			
+		
+		
+			
+		}
+		
+		@Test
+		public void queSePuedaAsignarUnCicloLectivoAulaYturnoAunaComision() {  //anda
+			String nombreUni = "unlam";
+			String nombreMateria = "pb2";
+			Integer codigoMateria = 4324;
+			Integer idComision = 2343;
+			Integer idCiclo = 9433;
+			Turno turno = Turno.MAÑANA ;
+			Integer nroAula = 3232;
+			Integer capacidadAlumnos = 50;
+			
+			
+			LocalDate inicioRangoCiclo=LocalDate.of(2003, 03, 03);
+			LocalDate finRangoCiclo=LocalDate.of(2003, 07, 03);
+			
+			//ACCION
+			Universidad unlam = new Universidad(nombreUni);
+			Materia materia = new Materia(codigoMateria, nombreMateria);
+			CicloLectivo ciclo = new CicloLectivo(idCiclo, inicioRangoCiclo, finRangoCiclo);
+			Comision comision = new Comision( idComision);
+			Aula aula = new Aula(nroAula,capacidadAlumnos);
+			
+			
+			unlam.registraMateria(materia);
+			unlam.agregarCicloLectivo(ciclo);
+			unlam.crearUnaComision(comision);
+			unlam.asignarMateriaAunaComision(idComision,codigoMateria);
+			assertTrue(unlam.asignarTurnoAunaComision(idComision,turno));
+			assertTrue(unlam.asignarAulaAunaComision(idComision,aula));
+			assertTrue(unlam.asignarCicloLectivoAunaComision(idComision,ciclo));
+			
+			
+		
+		
+			
+		}
+		
+		
+		
+		
 	
+		
+
 		//El mismo docente no puede ser profesor de la misma comisión 2 veces.
 		@Test
-		public void queSePuedaAsignarDocentesAComision() { //en proceso
+		public void queSePuedaAsignarDocenteAComision() { //anda
 			String nombreDeLaUniversidad = "Unlam";
 			
 			Long dni = 37246801L;
 			String nombre = "lucas";
 			Long celular = 1123451234L;
 			String email = "lucasbarrios@alumno.edu.ar";
-			Integer legajo = 333;
+			Integer idDocente = 333;
 			String apellido = "Barrios";
 			LocalDate fechaDeNacimiento=LocalDate.of(2003, 01, 03);
 			Integer idComision = 2343;
@@ -194,7 +260,7 @@ public class TestUniversidad {
 			
 			//ACCION
 			Universidad unlam = new Universidad(nombreDeLaUniversidad);
-			Profesor nuevoProfesor = new Profesor(legajo,dni,nombre, apellido, fechaDeNacimiento, celular,email);
+			Profesor nuevoProfesor = new Profesor(idDocente,dni,nombre, apellido, fechaDeNacimiento, celular,email);
 			Comision comision = new Comision( idComision);
 			
 			
@@ -202,9 +268,9 @@ public class TestUniversidad {
 			unlam.crearUnDocente(nuevoProfesor);
 			unlam.crearUnaComision(comision);
 			
-			Boolean sePudoCrear = unlam.asignarDocentesAComision(idComision, legajo);
-			assertNotNull(sePudoCrear);
-			//System.out.println(sePudoCrear);
+			Boolean sePudoCrear = unlam.asignarDocenteAComision(idComision, idDocente);
+			assertTrue(sePudoCrear);
+			
 			
 	  
 		}
@@ -269,44 +335,7 @@ public class TestUniversidad {
 	}
 	 
 		
-		
-	// comision id,Materia,CicloLectivo, turno
-	// que se pueda crear un curso 
-	// PARA MI EN COMISION DEBERIAMOS AGREGAR EL AULA QUE SE ASIGNA DEPENDIENDO LA CANTIDAD DE ALUMNOS
 	
-	@Test
-	public void queSePuedaCrearUnaComision() {  //en proceso
-		String nombreUni = "unlam";
-		String nombreMateria = "pb2";
-		Integer codigoMateria = 4324;
-		Integer idComision = 2343;
-		Integer idCiclo = 9433;
-		String turno = "m";
-		Integer nroAula = 3232;
-		LocalDate inicioRangoCiclo=LocalDate.of(2003, 03, 03);
-		LocalDate finRangoCiclo=LocalDate.of(2003, 07, 03);
-		
-		//ACCION
-		Universidad unlam = new Universidad(nombreUni);
-		Materia materia = new Materia(codigoMateria, nombreMateria);
-		CicloLectivo ciclo = new CicloLectivo(idCiclo, inicioRangoCiclo, finRangoCiclo);
-		Comision comision = new Comision( idComision);
-		
-		
-		unlam.registraMateria(materia);
-		unlam.agregarCicloLectivo(ciclo);
-		Boolean sePudoCrear = unlam.crearUnaComision(comision);
-		//Boolean materiaCreada =unlam.asignarCicloLectivoyTurnoAMateria(codigoMateria, idCiclo, turno);
-		
-		
-		
-		
-		assertNotNull(sePudoCrear);
-		System.out.println(sePudoCrear);
-		
-	}
-	
-	/*
 	
 	// Aula id, cantidadDeAlumnos
 	@Test
@@ -320,8 +349,30 @@ public class TestUniversidad {
 	// verificar que el alumno y el curso esten dado de alta
 	public void queSePuedaInscribirAlumnoAunCurso() {
 		
-	}*/
+	}
 	
+	/*@Test
+	public void queSePuedaInscribirUnAlumnoenMateria() { //es proceso
+		String  nombreUniversidad = "Unlam";
+     	String nombre = "Marta";
+    	String apellido = "perez";
+    	Long dni= 44555897L; 
+    	Integer idAlumno = 1;
+    	Long celular = 1566655848L;
+    	String email = "martaPerez@unlam.edu.ar";
+    	LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+     	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+     
+    	
+    	Universidad unlam = new Universidad (nombreUniversidad);
+    	Alumno alumno1 = new Alumno(idAlumno, dni, nombre, apellido, fechaDeNacimientoAlu, fechaDeIngresoAlu, celular, email);
+    	unlam.registrar(alumno1);
+        
+        assertTrue(unlam.inscribirAlumnoAUnaMateria(dni,idAlumno)) ;
+	
+	}*/
+
+	///////////////////////
 	
 	
 	

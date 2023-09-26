@@ -1,9 +1,12 @@
 package ar.edu.unlam.pb2.integrador1;
 
+import java.util.List;
+
 public class RegistroDeNotaExamenes {
 
 	private Alumno alumno;
-	private Nota nota;
+	private List<Nota> notasDelAlumno;
+	
 	
 	
 	
@@ -13,12 +16,12 @@ public class RegistroDeNotaExamenes {
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
-	public Nota getNota() {
-		return nota;
+	public List<Nota> getNotasDelAlumno() {
+		return notasDelAlumno;
 	}
-	public void setNota(Nota nota) {
-		this.nota = nota;
+	public void setNotasDelAlumno(List<Nota> notasDelAlumno) {
+		this.notasDelAlumno = notasDelAlumno;
 	}
-	
+
 	
 }

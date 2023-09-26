@@ -2,18 +2,50 @@ package ar.edu.unlam.pb2.integrador1;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Comision {
 	
-	private Materia materia;
+	private Materia materiaAsignada;
 	private CicloLectivo ciclo;
 	private Turno turno;
 	private Aula aula;
 	private Integer idComision;
 	private List<RegistroDeNotaExamenes> registroDeNota;
+	private Profesor profesorAsignado;
+	private Set<Alumno> alumnosAsignados;
 	
 	
 	
+
+
+	public Turno getTurno() {
+		return turno;
+	}
+
+
+
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
+
+
+
+
+	public Set<Alumno> getAlumnosAsignados() {
+		return alumnosAsignados;
+	}
+
+
+
+
+	public void setAlumnosAsignados(Set<Alumno> alumnosAsignados) {
+		this.alumnosAsignados = alumnosAsignados;
+	}
+
+
+
 
 	public Comision(Integer idComision) {
 		
@@ -33,11 +65,11 @@ public class Comision {
 	}
 
 	public Materia getMateria() {
-		return materia;
+		return materiaAsignada;
 	}
 
 	public void setMateria(Materia materia) {
-		this.materia = materia;
+		this.materiaAsignada = materia;
 	}
 
 	public CicloLectivo getCiclo() {
@@ -84,7 +116,7 @@ public class Comision {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(ciclo, materia, turno);
+		return Objects.hash(ciclo, materiaAsignada, turno);
 	}
 
 
@@ -98,7 +130,23 @@ public class Comision {
 		if (getClass() != obj.getClass())
 			return false;
 		Comision other = (Comision) obj;
-		return Objects.equals(ciclo, other.ciclo) && Objects.equals(materia, other.materia) && Objects.equals(turno, other.turno);
+		return Objects.equals(ciclo, other.ciclo) && Objects.equals(materiaAsignada, other.materiaAsignada) && Objects.equals(turno, other.turno);
+	}
+
+
+
+
+	public void setProfesorAsignado(Profesor profesor) {
+		this.profesorAsignado = profesor;
+		
+	}
+
+
+
+
+	public Profesor getProfesorAsignado() {
+		
+		return profesorAsignado;
 	}
 
 

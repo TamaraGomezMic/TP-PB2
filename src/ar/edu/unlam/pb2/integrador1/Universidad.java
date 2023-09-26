@@ -137,6 +137,18 @@ public class Universidad {
 			return null;
 		}
 		
+		public Profesor buscarProfesorPorId(Integer idDocente) {
+
+
+			for (int i = 0; i < profesor.size(); i++) {
+				if (this.profesor.get(i).getLegajo().equals(idDocente))
+					return this.profesor.get(i);
+
+			}
+			
+			return null;
+		}
+		
 		
 		
 		// ------- COMISION---------
@@ -197,18 +209,81 @@ public class Universidad {
 
 
 		//--en proceso
-		public Boolean asignarCicloLectivoyTurnoAMateria(Integer codigoMateria, Integer idCiclo, String turno) {
-			Boolean sePuedoAsignar = false;
-			Materia materia =  buscarMateriaPorCodigo(codigoMateria);
-			CicloLectivo ciclo = buscarCicloPorID(idCiclo);
-			
-			materia.agregarCicloLectivo(ciclo);
-			materia.agregarTurno(turno);
-			ciclo.agreagarUnMateriaAlCiclo(materia);
-			
-			
-			return null;
+//		public Boolean asignarCicloLectivoyTurnoAMateria(Integer codigoMateria, Integer idCiclo, String turno) {
+//			Boolean sePuedoAsignar = false;
+//			Materia materia =  buscarMateriaPorCodigo(codigoMateria);
+//			CicloLectivo ciclo = buscarCicloPorID(idCiclo);
+//			
+//			materia.agregarCicloLectivo(ciclo);
+//			materia.agregarTurno(turno);
+//			ciclo.agreagarUnMateriaAlCiclo(materia);
+//			
+//			
+//			return null;
+//		}
+
+
+		public Boolean asignarDocenteAComision(Integer idComision, Integer idDocente) {
+			if (buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getProfesorAsignado()== null) {
+				buscarComisionPorId(idComision).setProfesorAsignado(buscarProfesorPorId(idDocente));
+				return true;
+				
+				
+			}
+		
+			return false;
 		}
+
+
+		public Boolean asignarMateriaAunaComision(Integer idComision, Integer codigoMateria) {
+			if(buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getMateria() == null) {
+				buscarComisionPorId(idComision).setMateria(buscarMateriaPorCodigo(codigoMateria));
+				return true;
+			}
+			return false;
+			
+			
+		}
+
+
+		public Boolean asignarTurnoAunaComision(Integer idComision, Turno turno) {
+			if(buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getTurno()== null) {
+				buscarComisionPorId(idComision).setTurno(turno);
+				return true;
+			}
+			return false;
+			
+			
+			
+			
+			
+		}
+
+
+		public Boolean asignarAulaAunaComision(Integer idComision, Aula aula) {
+			if(buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getAula() == null) {
+				buscarComisionPorId(idComision).setAula(aula);
+				return true;
+			}
+			return false;
+			
+			
+		}
+
+
+		public Boolean asignarCicloLectivoAunaComision(Integer idComision, CicloLectivo ciclo) {
+			if(buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getCiclo() == null) {
+				buscarComisionPorId(idComision).setCiclo(ciclo);
+				return true;
+			}
+			return false;
+			
+			
+		}
+		
+
+
+		
 
 		/*
 		
