@@ -256,7 +256,7 @@ public class TestUniversidad {
 			
 			
 			unlam.registraMateria(materia);
-			//unlam.agregarCicloLectivo(ciclo); agregarlo
+			unlam.agregarCicloLectivo(ciclo); 
 			unlam.crearUnaComision(comision);
 			unlam.asignarMateriaAunaComision(idComision,codigoMateria);
 			assertTrue(unlam.asignarTurnoAunaComision(idComision,turno));		
@@ -381,13 +381,13 @@ public class TestUniversidad {
 		CicloLectivo ciclo = new CicloLectivo(idCiclo, inicioRangoCiclo, finRangoCiclo);
 		CicloLectivo ciclo1 = new CicloLectivo(idCiclo1, inicioRangoCiclo1, finRangoCiclo1);
 		
-		//agrgarlo
-		//unlam.agregarCicloLectivo(ciclo);
-		//Boolean sePudoCrear =unlam.agregarCicloLectivo(ciclo1);
+		
+		unlam.agregarCicloLectivo(ciclo);
+		Boolean sePudoCrear =unlam.agregarCicloLectivo(ciclo1);
 		
 		
-		//assertNotNull(sePudoCrear);
-		//System.out.println(sePudoCrear);
+		assertNotNull(sePudoCrear);
+		System.out.println(sePudoCrear);
 		
 		
 	}
