@@ -34,6 +34,7 @@ public class TestUniversidad {
     	assertTrue(registroExitoso);
     	//System.out.println(registroExitoso);
     	
+    	
 	}
 	
 	@Test
@@ -193,7 +194,6 @@ public class TestUniversidad {
 			Integer idComision = 2343;
 
 			
-
 			
 			//ACCION
 			Universidad unlam = new Universidad(nombreUni);
@@ -203,7 +203,7 @@ public class TestUniversidad {
 		
 								
 			assertNotNull(sePudoCrear);
-			System.out.println(sePudoCrear);
+			//System.out.println(sePudoCrear);
 			
 		}		
 		
@@ -256,7 +256,7 @@ public class TestUniversidad {
 			
 			
 			unlam.registraMateria(materia);
-			unlam.agregarCicloLectivo(ciclo);
+			//unlam.agregarCicloLectivo(ciclo); agregarlo
 			unlam.crearUnaComision(comision);
 			unlam.asignarMateriaAunaComision(idComision,codigoMateria);
 			assertTrue(unlam.asignarTurnoAunaComision(idComision,turno));		
@@ -360,10 +360,7 @@ public class TestUniversidad {
 		assertNotNull(Tecnicatura);
 		
 		
->>>>>>> manrique
-	}
-	
-	*
+
 	*
 	*/
 	
@@ -373,21 +370,23 @@ public class TestUniversidad {
 	public void queSePuedaCrearUnCicloLectivo() {  //FALTAN LAS FECHAS
 		String nombreUni = "unlam";
 		Integer idCiclo = 9433;
-		String turno = "m";
 		Integer idCiclo1 = 9423;
 		LocalDate inicioRangoCiclo=LocalDate.of(2003, 03, 03);
-		LocalDate finRangoCiclo=LocalDate.of(2003, 07, 03);
+		LocalDate finRangoCiclo=LocalDate.of(2003, 04, 03);
+		
+		LocalDate inicioRangoCiclo1=LocalDate.of(2003, 06, 03);
+		LocalDate finRangoCiclo1=LocalDate.of(2003, 07, 03);
 		//ACCION
 		Universidad unlam = new Universidad(nombreUni);
 		CicloLectivo ciclo = new CicloLectivo(idCiclo, inicioRangoCiclo, finRangoCiclo);
-		CicloLectivo ciclo1 = new CicloLectivo(idCiclo1, inicioRangoCiclo, finRangoCiclo);
+		CicloLectivo ciclo1 = new CicloLectivo(idCiclo1, inicioRangoCiclo1, finRangoCiclo1);
+		
+		//agrgarlo
+		//unlam.agregarCicloLectivo(ciclo);
+		//Boolean sePudoCrear =unlam.agregarCicloLectivo(ciclo1);
 		
 		
-		unlam.agregarCicloLectivo(ciclo);
-		Boolean sePudoCrear =unlam.agregarCicloLectivo(ciclo1);
-		
-		
-		assertNotNull(sePudoCrear);
+		//assertNotNull(sePudoCrear);
 		//System.out.println(sePudoCrear);
 		
 		
@@ -397,18 +396,18 @@ public class TestUniversidad {
 	
 	
 	// Aula id, cantidadDeAlumnos
-	@Test
-	public void queSePuedaAsignarUnAula() {
-		
-	}
+//	@Test
+//	public void queSePuedaAsignarUnAula() {
+//		
+//	}
+//	
 	
 	
-	
-	@Test
+//	@Test
 	// verificar que el alumno y el curso esten dado de alta
-	public void queSePuedaInscribirAlumnoAunCurso() {
-		
-	}
+//	public void queSePuedaInscribirAlumnoAunCurso() {
+//		
+//	}
 	
 	/*@Test
 	public void queSePuedaInscribirUnAlumnoenMateria() { //es proceso

@@ -1,5 +1,6 @@
 package ar.edu.unlam.pb2.integrador1;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -181,30 +182,50 @@ public class Universidad {
 		}
 		
 		
+		//---------CICLO LECTIVO -----------
+		//de 189 a 198 va
 		//No se puede asignar 2 ciclos Lectivo con mismo Id 
 		//y no se pueden superponer los rangos de fechas entre 2 ciclos distintos
-		public Boolean agregarCicloLectivo(CicloLectivo ciclo) {
-			if (buscarCicloPorID(ciclo.getIdCiclo()) == null) {
-				this.cicloLectivo.add(ciclo);
-				return true;
-			}
-			
-
-			return false;
-			
-		}// faltan validar las fechas
+//		public Boolean agregarCicloLectivo(CicloLectivo ciclo) {
+//			if (buscarCicloPorID(ciclo.getIdCiclo()) == null && fechaEnRango(ciclo.getInicioCiclo(), ciclo.getFinCiclo())== null) {
+//				this.cicloLectivo.add(ciclo);
+//				return true;
+//			}
+//			
+//
+//			return false;
+//			
+	//	}// faltan validar las fechas
 		
+		
+		
+// 203 a 210 va
+//		public CicloLectivo fechaEnRango(LocalDate inicioRangoCiclo, LocalDate finRangoCiclo) {
+//			for (int i = 0; i < cicloLectivo.size(); i++) {
+//				if (!this.cicloLectivo.get(i).getFinCiclo().isBefore(inicioRangoCiclo) && !finRangoCiclo.isBefore(this.cicloLectivo.get(i).getInicioCiclo())) {
+//					return this.cicloLectivo.get(i);
+//				}
+//			}
+//		
+//			return null;
+//		}
 
-		public CicloLectivo buscarCicloPorID(Integer idCiclo) {
-			
-			for (int i = 0; i < cicloLectivo.size(); i++) {
-				if (this.cicloLectivo.get(i).getIdCiclo().equals(idCiclo))
-					return this.cicloLectivo.get(i);
 
-			}
-			
-			return null;
-		}
+		//.after(inicioRangoCiclo) || cicloLectivo.equals(inicioRangoCiclo))
+				//&& (cicloLectivo.before(finRangoCiclo) || cicloLectivo.equals(finRangoCiclo))
+
+		
+//	de 218 a2228va	
+//		public CicloLectivo buscarCicloPorID(Integer idCiclo) {
+//			
+//			for (int i = 0; i < cicloLectivo.size(); i++) {
+//				if (this.cicloLectivo.get(i).getIdCiclo().equals(idCiclo))
+//					return this.cicloLectivo.get(i);
+//
+//			}
+//			
+//			return null;
+//		}
 
 
 
@@ -289,16 +310,6 @@ public class Universidad {
 
 		
 
-		/*
-		
-
-		if (curso.mostrarALumno().equals(alumno)) {
-			alumno.agregarUnCurso(Legajo);
-			return sePuedoInscribir = true;
-		} 
-
-		
-		*/
 		
 		
 
