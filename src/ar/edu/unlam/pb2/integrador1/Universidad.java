@@ -15,6 +15,7 @@ public class Universidad {
 		private ArrayList <InscripcionAmateria> inscripcionesMateria;
 		private ArrayList<Comision> comision;
 		private ArrayList<CicloLectivo> cicloLectivo;
+		private ArrayList<Aula> aula;
 
 		public Universidad(String nombre) {
 			this.setNombreUni(nombre);
@@ -24,6 +25,7 @@ public class Universidad {
 			this.inscripcionesMateria = new ArrayList<>();
 			this.comision = new ArrayList<Comision>();
 			this.cicloLectivo = new ArrayList<CicloLectivo>();
+			this.aula = new ArrayList<Aula>();
 		}
 
 
@@ -303,6 +305,13 @@ public class Universidad {
 			}
 			return false;
 			
+			
+		}
+
+		//----AULA-------
+
+		public Boolean crearAula(Aula aula) {
+			return this.aula.add(aula);
 			
 		}
 		
