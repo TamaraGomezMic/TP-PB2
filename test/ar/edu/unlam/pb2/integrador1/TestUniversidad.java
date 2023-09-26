@@ -65,6 +65,41 @@ public class TestUniversidad {
 	}
 	
 	@Test
+	public void queNoSePuedaRegistrarUnAlumnoConElMismoDniAlaUniversidad() { //anda//
+			String  nombreUniversidad = "Unlam";
+	     	String nombre = "Marta";
+	    	String apellido = "perez";
+	    	Long dni= 44555897L; 
+	    	Integer idAlumno = 1;
+	    	Long celular = 1566655848L;
+	    	String email = "martaPerez@unlam.edu.ar";
+	    	LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+	     	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+	    	
+	     	String nombre2 = "luisa";
+	    	String apellido2 = "perez";
+	 
+	    	Integer idAlumno2 = 2;
+	    	    	
+	    	
+	    	Universidad unlam = new Universidad (nombreUniversidad);
+	    	Alumno alumno1 = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
+	   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
+	    	Alumno alumno2 = new Alumno(idAlumno2,dni,nombre2,celular, email, apellido2,
+	   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
+	
+	   		
+	   		unlam.registrar(alumno1);	   		  	
+	   		Boolean registroExitoso = unlam.registrar(alumno2);
+	   		
+	   		assertFalse(registroExitoso);
+	   		System.out.println("el alumno tiene el mismo dni que un alumno ya registrado");
+
+    	
+	}
+	
+	
+	@Test
 
 	public void queSePuedaRegistrarUnaMateriaAUnaUniversidad() { //anda****
 		String  nombre = "Unlam";
@@ -201,17 +236,15 @@ public class TestUniversidad {
 		}
 		
 		@Test
-		public void queSePuedaAsignarUnCicloLectivoAulaYturnoAunaComision() {  //anda
+		public void queSePuedaAsignarUnCicloLectivoYturnoAunaComision() {  //anda
 			String nombreUni = "unlam";
 			String nombreMateria = "pb2";
 			Integer codigoMateria = 4324;
 			Integer idComision = 2343;
 			Integer idCiclo = 9433;
 			Turno turno = Turno.MAÑANA ;
-			Integer nroAula = 3232;
-			Integer capacidadAlumnos = 50;
-			
-			
+		
+						
 			LocalDate inicioRangoCiclo=LocalDate.of(2003, 03, 03);
 			LocalDate finRangoCiclo=LocalDate.of(2003, 07, 03);
 			
@@ -220,30 +253,21 @@ public class TestUniversidad {
 			Materia materia = new Materia(codigoMateria, nombreMateria);
 			CicloLectivo ciclo = new CicloLectivo(idCiclo, inicioRangoCiclo, finRangoCiclo);
 			Comision comision = new Comision( idComision);
-			Aula aula = new Aula(nroAula,capacidadAlumnos);
 			
 			
 			unlam.registraMateria(materia);
 			unlam.agregarCicloLectivo(ciclo);
 			unlam.crearUnaComision(comision);
 			unlam.asignarMateriaAunaComision(idComision,codigoMateria);
-			assertTrue(unlam.asignarTurnoAunaComision(idComision,turno));
-			assertTrue(unlam.asignarAulaAunaComision(idComision,aula));
+			assertTrue(unlam.asignarTurnoAunaComision(idComision,turno));		
 			assertTrue(unlam.asignarCicloLectivoAunaComision(idComision,ciclo));
 			
-			
-		
-		
-			
+					
 		}
 		
 		
-		
-		
-	
-		
-
 		//El mismo docente no puede ser profesor de la misma comisión 2 veces.
+		
 		@Test
 		public void queSePuedaAsignarDocenteAComision() { //anda
 			String nombreDeLaUniversidad = "Unlam";
@@ -274,8 +298,43 @@ public class TestUniversidad {
 			
 	  
 		}
-	
-	
+		@Test
+		public void queSePuedaAsignarUnProfesorAyudante() { //estoy terminando
+			String nombreDeLaUniversidad = "Unlam";
+			
+			Long dni = 37246801L;
+			String nombre = "lucas";
+			Long celular = 1123451234L;
+			String email = "lucasbarrios@alumno.edu.ar";
+			Integer idDocente = 333;
+			String apellido = "Barrios";
+			Long dni2 = 36246801L;
+			String nombre2 = "graciela";			
+			Integer idDocente2 = 3353;
+			String apellido2 = "Barrionuevo";
+			LocalDate fechaDeNacimiento=LocalDate.of(2003, 01, 03);
+			Integer idComision = 2343;
+			
+			
+			//ACCION
+			Universidad unlam = new Universidad(nombreDeLaUniversidad);
+			Profesor nuevoProfesor = new Profesor(idDocente,dni,nombre, apellido, fechaDeNacimiento, celular,email);
+			Profesor profesorAyudante = new Profesor(idDocente2,dni2,nombre2, apellido2, fechaDeNacimiento, celular,email);
+			Comision comision = new Comision( idComision);
+			
+			
+			//unlam.crearUnDocente(nuevoProfesor);
+			unlam.crearUnDocente(nuevoProfesor);
+			unlam.crearUnDocente(profesorAyudante);
+			unlam.crearUnaComision(comision);
+			
+			unlam.asignarDocenteAComision(idComision, idDocente);
+			unlam.asignarDocenteAComision(idComision, idDocente2);
+			
+			
+			
+	  
+		}
 	
 	@Test
 

@@ -66,14 +66,14 @@ public class Universidad {
 		}
 
 
-		public Boolean existeAlumno(Integer dni) {
-			for (int i = 0; i < alumno.size(); i++) {
-				if (this.alumno.get(i).getDni().equals(dni))
-
-					return true;
-			}
-			return false;
-		}
+//		public Boolean existeAlumno(Integer dni) { es igual a buscar alumno por dni 
+//			for (int i = 0; i < alumno.size(); i++) {
+//				if (this.alumno.get(i).getDni().equals(dni))
+//
+//					return true;
+//			}
+//			return false;
+//		}
 
 		public Boolean registraMateria(Materia materia) {
 		     if (buscarMateriaPorCodigo(materia.getCodigoDeMateria())== null) {
@@ -224,11 +224,15 @@ public class Universidad {
 
 
 		public Boolean asignarDocenteAComision(Integer idComision, Integer idDocente) {
-			if (buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getProfesorAsignado()== null) {
+			if (buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getProfesorAsignado().isEmpty()) {
 				buscarComisionPorId(idComision).setProfesorAsignado(buscarProfesorPorId(idDocente));
 				return true;
-				
-				
+			
+			} else {
+				if (buscarComisionPorId(idComision)!= null && buscarComisionPorId(idComision).getAlumnosAsignados().size() >21) {
+					buscarComisionPorId(idComision).setProfesorAsignado(buscarProfesorPorId(idDocente));
+					return true;
+				}
 			}
 		
 			return false;

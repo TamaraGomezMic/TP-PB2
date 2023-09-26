@@ -1,5 +1,7 @@
 package ar.edu.unlam.pb2.integrador1;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -12,48 +14,20 @@ public class Comision {
 	private Aula aula;
 	private Integer idComision;
 	private List<RegistroDeNotaExamenes> registroDeNota;
-	private Profesor profesorAsignado;
+	private Set<Profesor> profesorAsignado;
 	private Set<Alumno> alumnosAsignados;
 	
 	
-	
-
-
-	public Turno getTurno() {
-		return turno;
-	}
-
-
-
-
-	public void setTurno(Turno turno) {
-		this.turno = turno;
-	}
-
-
-
-
-	public Set<Alumno> getAlumnosAsignados() {
-		return alumnosAsignados;
-	}
-
-
-
-
-	public void setAlumnosAsignados(Set<Alumno> alumnosAsignados) {
-		this.alumnosAsignados = alumnosAsignados;
-	}
-
-
-
-
 	public Comision(Integer idComision) {
 		
 		this.idComision=idComision;
+		registroDeNota = new ArrayList<RegistroDeNotaExamenes>();
+		profesorAsignado = new HashSet <Profesor>();
+		alumnosAsignados = new HashSet <Alumno>();
+		
+	
 		
 	}
-
-
 
 
 	public Integer getIdComision() {
@@ -81,11 +55,6 @@ public class Comision {
 	}
 
 	
-
-	
-
-
-
 	public List<RegistroDeNotaExamenes> getRegistroDeNota() {
 		return registroDeNota;
 	}
@@ -109,6 +78,48 @@ public class Comision {
 	public void setAula(Aula aula) {
 		this.aula = aula;
 	}
+	
+
+	public Turno getTurno() {
+		return turno;
+	}
+	
+	
+	public Set<Profesor> getProfesorAsignado() {
+		return profesorAsignado;
+	}
+
+
+
+
+
+	public void setProfesorAsignado(Profesor profesorAsignado) {
+		this.profesorAsignado.add(profesorAsignado);
+	}
+
+	
+
+
+
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
+
+
+
+
+	public Set<Alumno> getAlumnosAsignados() {
+		return alumnosAsignados;
+	}
+
+
+
+
+	public void setAlumnosAsignados(Set<Alumno> alumnosAsignados) {
+		this.alumnosAsignados = alumnosAsignados;
+	}
+
 
 
 	
@@ -136,18 +147,11 @@ public class Comision {
 
 
 
-	public void setProfesorAsignado(Profesor profesor) {
-		this.profesorAsignado = profesor;
-		
-	}
 
 
 
 
-	public Profesor getProfesorAsignado() {
-		
-		return profesorAsignado;
-	}
+
 
 
 
