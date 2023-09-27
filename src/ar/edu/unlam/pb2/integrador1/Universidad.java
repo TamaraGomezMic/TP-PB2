@@ -99,9 +99,7 @@ public class Universidad {
 			return null;
 		}
 		
-		
-		
-
+	
 
 		public ArrayList<Materia> getMateria() {
 			return materia;
@@ -529,14 +527,26 @@ public class Universidad {
 
 
 		public void inscribirAlumnoAUnaMateria(Long dni, Integer codigoMateria, PlanDeEstudio tecnicatura) {
+
 		 if(buscarAlumnoPorDni(dni)!= null && tecnicatura.buscarMateriaPorCodigo(codigoMateria)!= null) { //verifique que este el alumno y este la materia en el plan de estudio 
 			 //verificar si esa materia tiene correlativa , si tiene correlativa ver que el alumno la tenga aprobada
 			 
-			 
+			 if (permitirInscripcionPorCorrelativa(codigoMateria)) {
+				 
+				 InscripcionAmateria materiaInscripta = new InscripcionAmateria(buscarAlumnoPorDni(dni),buscarMateriaPorCodigo(codigoMateria));
+				 inscripcionesMateria.add(materiaInscripta);
+			 }
 			 
 			 
 		 }
 			
+		}
+
+
+		private boolean permitirInscripcionPorCorrelativa(Integer codigoMateria) {
+			
+			
+			return false;
 		}
 
 

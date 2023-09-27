@@ -371,6 +371,23 @@ public class TestUniversidad {
 					
 		}
 		
+		@Test
+		public void queSePuedaAsignarUnAulaAlaComision() { // falta HAcer
+				String nombreUni = "unlam";
+			Integer nroAula = 42343;
+			Integer capacidadMaxima= 60;
+			
+			
+			//ACCION
+			Universidad unlam = new Universidad(nombreUni);
+			Aula aula = new Aula(nroAula, capacidadMaxima);
+			
+			Boolean sePudoCrear =unlam.crearAula(aula);
+			
+			
+		
+
+	}
 		
 		
 		
@@ -405,7 +422,7 @@ public class TestUniversidad {
 	  
 		}
 		@Test
-		public void queSePuedaAsignarUnProfesorAyudante() { //estoy terminando
+		public void queSePuedaAsignarUnProfesorAyudante() { //falta termiknar
 			String nombreDeLaUniversidad = "Unlam";
 			
 			Long dni = 37246801L;
@@ -494,11 +511,13 @@ public class TestUniversidad {
 	
 
 }
+	
+	
 
 									//-------------------NOTAS---------------
 	
 	@Test  
-	public void queSePuedaCrearUnaNota() { 
+	public void queSePuedaCrearUnaNota() { // anda
 		String  nombreUniversidad = "Unlam";
 		Integer valorNota= 1;
 		TipoDeNota tipoN = TipoDeNota.FINAL;
@@ -514,7 +533,7 @@ public class TestUniversidad {
 	}
 	
 	@Test  
-	public void queNoSePuedanRendirDosRecuperatorios() { 
+	public void queNoSePuedanRendirDosRecuperatorios() { //anda
 		String  nombreUniversidad = "Unlam";
 		Integer valorNota1= 10;
 		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
@@ -536,7 +555,7 @@ public class TestUniversidad {
 	}
 	
 	@Test  
-	public void queNoSePuedanRendirFinal() { 
+	public void queNoSePuedanRendirFinal() { //anda
 		String  nombreUniversidad = "Unlam";
 		Integer valorNota1= 1;
 		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
@@ -750,7 +769,32 @@ public class TestUniversidad {
 	}
 
 
+	@Test
+	public void queSePuedaAsignarAlumosAlaComision() {
+			String nombreUni = "unlam";
+			Integer idComision = 2343;
+			String nombreMateria = "PB1";
+	        Integer codigoMateria = 1;
+	        
+		
+		
+		//ACCION
+		Universidad unlam = new Universidad(nombreUni);	
+		Comision comision = new Comision( idComision);
+		Materia pb1 = new Materia(codigoMateria,nombreMateria);
+		
+		
+		
+		
+		unlam.crearUnaComision(comision);
+		unlam.asignarMateriaAunaComision(idComision, codigoMateria);
 	
+							
+		
+		
+		
+
+}
 	
 	
 }
