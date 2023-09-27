@@ -7,10 +7,10 @@ import org.junit.Test;
 public class TestPlanDeEstudio {
 
 	
-	
+	 
 	@Test
 
-	public void queSePuedaCrearUnPlanDeEstudio() { // anda ***
+	public void queSePuedaCrearUnPlanDeEstudio() { 
 		String nombre = "Desarrollo Web";
 		
 		PlanDeEstudio tecnicatura = new PlanDeEstudio(nombre);

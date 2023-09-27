@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb2.integrador1;
 
-import java.util.HashSet;
+
 
 import java.util.Objects;
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ public class CicloLectivo {
 	private LocalDate finCiclo;
 	
 	private Turno turno;
-	private HashSet<Materia> materias;
+	
 
 	public CicloLectivo(Integer idCiclo,LocalDate inicioCiclo,LocalDate finCiclo) {
 		this.idCiclo = idCiclo;
@@ -42,10 +42,7 @@ public class CicloLectivo {
 		return Objects.hash(idCiclo);
 	}
 
-	public void agreagarUnMateriaAlCiclo(Materia materia) {
-		materias.add(materia);
-		
-	}
+	
 
 	
 
@@ -65,14 +62,7 @@ public class CicloLectivo {
 		this.finCiclo = finCiclo;
 	}
 
-	public HashSet<Materia> getMaterias() {
-		return materias;
-	}
-
-	public void setMaterias(HashSet<Materia> materias) {
-		this.materias = materias;
-	}
-
+	
 	
 
 	

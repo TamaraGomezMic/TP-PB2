@@ -236,7 +236,7 @@ public class TestUniversidad {
 	}
 	
 	
-		//docente
+		                                   //DOCENTE
 	
 		@Test
 		public void queSePuedaCrearUnDocente() { //andaa
@@ -292,7 +292,7 @@ public class TestUniversidad {
 	  
 		}
 		
-			//comision
+			                          //COMISION
 		@Test
 		public void queSePuedaCrearUnaComision() {  //anda
 			String nombreUni = "unlam";
@@ -372,6 +372,8 @@ public class TestUniversidad {
 		}
 		
 		
+		
+		
 		@Test
 		public void queSePuedaAsignarDocenteAComision() { //anda
 			String nombreDeLaUniversidad = "Unlam";
@@ -439,6 +441,9 @@ public class TestUniversidad {
 			
 	  
 		}
+		
+		
+								//CICLO LECTIVO
 	
 	
 	//ciclo lectivo  id, fechaDeInicioDeCicloLectivo,fechaFinalizacionCicloLectivo, fechaInicioInscripcion,fechaFinalizacionInscripcion
@@ -471,7 +476,7 @@ public class TestUniversidad {
 		
 	
 	
-	// Aula id, cantidadDeAlumnos
+									// Aula id, cantidadDeAlumnos
 
 	@Test
 	public void queSePuedaCrearUnAula() {
@@ -490,7 +495,7 @@ public class TestUniversidad {
 
 }
 
-	//-------------------NOTAS---------------
+									//-------------------NOTAS---------------
 	
 	@Test  
 	public void queSePuedaCrearUnaNota() { 
@@ -511,6 +516,28 @@ public class TestUniversidad {
 	@Test  
 	public void queNoSePuedanRendirDosRecuperatorios() { 
 		String  nombreUniversidad = "Unlam";
+		Integer valorNota1= 10;
+		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
+		Integer valorNota2= 4;
+		TipoDeNota tipoN2 = TipoDeNota.SDO_PARCIAL;
+    	
+    	Universidad unlam = new Universidad(nombreUniversidad);
+    	Nota nota1 = new Nota(valorNota1, tipoN1);
+    	Nota nota2 = new Nota(valorNota2, tipoN2);
+	    	   	
+    	//unlam.registrarNota(nota1);
+    	//unlam.registrarNota(nota2);
+    	
+		Boolean sePuedeRendirRecuperatorio = unlam.verificarRecuperatorio(nota1, nota2);
+		assertNotNull(sePuedeRendirRecuperatorio);
+    	//System.out.println(sePuedeRendirRecuperatorio);
+    	
+    	
+	}
+	
+	@Test  
+	public void queNoSePuedanRendirFinal() { 
+		String  nombreUniversidad = "Unlam";
 		Integer valorNota1= 1;
 		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
 		Integer valorNota2= 3;
@@ -520,17 +547,17 @@ public class TestUniversidad {
     	Nota nota1 = new Nota(valorNota1, tipoN1);
     	Nota nota2 = new Nota(valorNota2, tipoN2);
 	    	   	
-    	unlam.registrarNota(nota1);
-		Boolean registroExitoso = unlam.verificarRecuperatorio(nota2);
-		assertNotNull(registroExitoso);
-    	System.out.println(registroExitoso);
+    	//unlam.registrarNota(nota1);
+    	//unlam.registrarNota(nota2);
+    	
+		Boolean sePuedeRendirFinal = unlam.puedeRendirFinal(nota1, nota2);
+		assertNotNull(sePuedeRendirFinal);
+    	//System.out.println(sePuedeRendirFinal);
     	
     	
 	}
-	
-	
 	@Test  
-	public void queSePuedaRegistrarUnaNotaDeUnaMateriaAUnAlumno() { 
+	public void queSePuedaRegistrarNotasDeUnaMateriaAUnAlumno() { 
 		
 		String  nombreUniversidad = "Unlam";
 		//alumno
@@ -543,27 +570,45 @@ public class TestUniversidad {
     	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
     	Integer idAlumno = 1;
 		//nota
-		Integer valorNota= 1;
-		TipoDeNota tipoN = TipoDeNota.FINAL;
+    	Integer valorNota1= 10;
+		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
+		Integer valorNota2= 5;
+		TipoDeNota tipoN2 = TipoDeNota.SDO_PARCIAL;
+		Integer valorNota3= 1;
+		TipoDeNota tipoN3 = TipoDeNota.REC_1PARCIAL;
+		Integer valorNota4= 1;
+		TipoDeNota tipoN4 = TipoDeNota.REC_2DOPARCIAL;
+		Integer valorNota5= 1;
+		TipoDeNota tipoN5 = TipoDeNota.FINAL;
 		//comision
 		Integer idComision = 2343;
         
-        
-		Integer nroLegajo=1;
 		
 		Universidad unlam = new Universidad(nombreUniversidad);
     	Alumno alumno = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
    				fechaDeNacimientoAlu,fechaDeIngresoAlu);
-        Nota nota = new Nota(valorNota, tipoN);
+        
+    	Nota nota1 = new Nota(valorNota1, tipoN1);
+        Nota nota2 = new Nota(valorNota2, tipoN2);
+        Nota nota3 = new Nota(valorNota3, tipoN3);
+        Nota nota4 = new Nota(valorNota4, tipoN4);
+    	Nota nota5 = new Nota(valorNota5, tipoN5);
+    	
+    	
         Comision comision = new Comision( idComision);
 
         
-        Boolean registroNotaExitoso = unlam.crearRegistroDeNota(alumno, comision, nota);
+        Boolean registroNotaExitoso = unlam.crearRegistroDeNota(alumno, comision, nota1, nota2, nota3, nota4, nota5);
 		assertNotNull(registroNotaExitoso);
-    	//System.out.println(registroNotaExitoso);
+    	System.out.println(registroNotaExitoso);
     	
     	
 	}
+
+	
+	
+	
+		
 	
 	
 	/*@Test  
@@ -604,18 +649,69 @@ public class TestUniversidad {
     	
 	} */
 	
+	/////no se si esta bien ---- no coincide el nombre del test
 	
-	
-	
-	
-//	@Test
+	@Test
 	// verificar que el alumno y el curso esten dado de alta
-//	public void queSePuedaInscribirAlumnoAunCurso() {
-//		
-//	}
+	public void queSePuedaInscribirAlumnoAunCurso() {
+		
+		String  nombreUniversidad = "Unlam";
+		//alumno
+    	String nombre = "Marta";
+    	String apellido = "perez";
+    	Long dni= 44555897L; 
+    	Long celular = 1566655848L;
+    	String email = "martaPerez@unlam.edu.ar";
+		LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+    	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+    	Integer idAlumno = 1;
+		//nota
+    	Integer valorNota1= 10;
+		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
+		Integer valorNota2= 5;
+		TipoDeNota tipoN2 = TipoDeNota.SDO_PARCIAL;
+		Integer valorNota3= 1;
+		TipoDeNota tipoN3 = TipoDeNota.REC_1PARCIAL;
+		Integer valorNota4= 1;
+		TipoDeNota tipoN4 = TipoDeNota.REC_2DOPARCIAL;
+		Integer valorNota5= 1;
+		TipoDeNota tipoN5 = TipoDeNota.FINAL;
+		//comision
+		Integer idComision = 2343;
+        
+		
+		Universidad unlam = new Universidad(nombreUniversidad);
+    	Alumno alumno = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
+   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
+        
+    	Nota nota1 = new Nota(valorNota1, tipoN1);
+        Nota nota2 = new Nota(valorNota2, tipoN2);
+        Nota nota3 = new Nota(valorNota3, tipoN3);
+        Nota nota4 = new Nota(valorNota4, tipoN4);
+    	Nota nota5 = new Nota(valorNota5, tipoN5);
+    	
+    	
+        Comision comision = new Comision( idComision);
+
+        
+        Boolean registroNotaExitoso = unlam.crearRegistroDeNota(alumno, comision, nota1, nota2, nota3, nota4, nota5);
+        //Boolean seObtuvo = unlam.sePuedaObtener(registroNotaExitoso);
+        
+        
+        assertNotNull(registroNotaExitoso);
+    	System.out.println(registroNotaExitoso);
+    	
+	}
 	
-	/*@Test
-	public void queSePuedaInscribirUnAlumnoenMateria() { //es proceso
+	
+	
+										//ALUMNO
+	
+	
+
+	
+	@Test
+	public void queSePuedaInscribirUnAlumnoenMateriaSinCorrelativa() { 
 		String  nombreUniversidad = "Unlam";
      	String nombre = "Marta";
     	String apellido = "perez";
@@ -625,18 +721,35 @@ public class TestUniversidad {
     	String email = "martaPerez@unlam.edu.ar";
     	LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
      	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
-     
-    	
-    	Universidad unlam = new Universidad (nombreUniversidad);
-    	Alumno alumno1 = new Alumno(idAlumno, dni, nombre, apellido, fechaDeNacimientoAlu, fechaDeIngresoAlu, celular, email);
-    	unlam.registrar(alumno1);
+     	
+		String nombreMateria = "PB1";
+        Integer codigoMateria = 1;
         
-        assertTrue(unlam.inscribirAlumnoAUnaMateria(dni,idAlumno)) ;
+        String nombreCarrera = "Desarrollo Web";
+     
+		Integer valorNota= 1;
+		TipoDeNota tipoN = TipoDeNota.FINAL;
 	
-	}*/
+		
+        Nota nota = new Nota(valorNota, tipoN);
+            
+		PlanDeEstudio tecnicatura = new PlanDeEstudio(nombreCarrera);	
+        Materia pb1 = new Materia(codigoMateria,nombreMateria);
+    	Universidad unlam = new Universidad (nombreUniversidad);
+    	Alumno alumno1 = new Alumno( idAlumno, dni,  nombre, celular, email, apellido,
+    			 fechaDeNacimientoAlu,fechaDeIngresoAlu);
+    	
+    	
+    	unlam.registrar(alumno1);
+    	unlam.registraMateria(pb1);
+    	tecnicatura.ingresarMateriaAlPlanDeEstudio(unlam, codigoMateria);
+    	
+    	
+        unlam.inscribirAlumnoAUnaMateria(dni,codigoMateria,tecnicatura);
+	
+	}
 
-	///////////////////////
-	
+
 	
 	
 	

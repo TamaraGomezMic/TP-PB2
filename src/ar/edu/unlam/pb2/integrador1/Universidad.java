@@ -112,24 +112,24 @@ public class Universidad {
 			this.materia.add(materia);
 		}
 
- boolean inscribirAlumnoAUnaMateria(Long dni, Integer codigo) {
-			
-			//no se puede inscribir alumnos si no tiene al menps cursada todas las correlativas(correlativas nota >=4)
-		
-			Alumno alumno = this.buscarAlumnoPorDni(dni);
-			Materia materia = this.buscarMateriaPorCodigo(codigo);
-			
-			if (alumno != null && materia != null) {
-				
-
-		    InscripcionAmateria  inscripcionMateria = new InscripcionAmateria (alumno,materia);
-
-			return this.inscripcionesMateria.add(inscripcionMateria );
-				
-			}
-			
-			return false;
-		}
+// boolean inscribirAlumnoAUnaMateria(Long dni, Integer codigo) {
+//			
+//			//no se puede inscribir alumnos si no tiene al menps cursada todas las correlativas(correlativas nota >=4)
+//		
+//			Alumno alumno = this.buscarAlumnoPorDni(dni);
+//			Materia materia = this.buscarMateriaPorCodigo(codigo);
+//			
+//			if (alumno != null && materia != null) {
+//				
+//
+//		    InscripcionAmateria  inscripcionMateria = new InscripcionAmateria (alumno,materia);
+//
+//			return this.inscripcionesMateria.add(inscripcionMateria );
+//				
+//			}
+//			
+//			return false;
+//		}
 
 		
 		//-----------DOCENTE-----------
@@ -330,6 +330,7 @@ public class Universidad {
 			return this.aula.add(aula);
 			
 		}
+		
 
 		
 		//---------NOTA---------
@@ -338,11 +339,12 @@ public class Universidad {
 
 		public Boolean registrarNota(Nota nota) {
 			
-			
-			this.nota.add(nota);
-			return true;
-			     
-	      
+			if(queElTipoDeNotaSeaValido(nota) && notaDeUnoADiez(nota)) {
+				this.nota.add(nota);
+				return true;
+				
+			}
+			return false;
 		}
 
 		public Boolean queElTipoDeNotaSeaValido(Nota nota) {
@@ -359,6 +361,107 @@ public class Universidad {
 			return true;
 		}
 		
+		public Boolean notaDeUnoADiez(Nota nota) {
+			if((nota.getValor() >= 1) && (nota.getValor() <= 10)) {
+					
+					return true;
+			     
+	        }
+			
+			return false;
+		}
+		
+		public Boolean crearRegistroDeNota(Alumno alumno, Comision comision, Nota nota1, Nota nota2, Nota nota3,
+				Nota nota4, Nota nota5) {
+			Boolean alumnos = registrar(alumno);
+			Boolean comisiones = crearUnaComision(comision);
+			
+			Boolean notas1 = registrarNota(nota1);
+			Boolean notas2 = registrarNota(nota2);
+			Boolean notas3 = registrarNota(nota3);
+			Boolean notas4 = registrarNota(nota4);
+			Boolean notas5 = registrarNota(nota5);
+			
+			if(alumnos && comisiones && notas1 && notas2 && notas3 && notas4 && notas5) {
+				
+				new RegistroDeNotaExamenes(alumno,nota1,comision);
+				new RegistroDeNotaExamenes(alumno,nota2,comision);
+				
+				if(puedeRendirFinal(nota1,nota2)){
+					new RegistroDeNotaExamenes(alumno,nota5,comision);
+					return true;
+				}else if(verificarRecuperatorio(nota1,nota2)) {
+						if(nota1.getValor() > 4) {
+							new RegistroDeNotaExamenes(alumno,nota4,comision);
+							return true;
+						} 
+						new RegistroDeNotaExamenes(alumno,nota3,comision);
+					}
+					return true;
+				}
+			
+				return false;
+			
+		}
+		
+	public Boolean verificarRecuperatorio(Nota nota1, Nota nota2) {
+			
+			if ((registrarNota(nota1) && registrarNota(nota2))) {
+				this.nota.add(nota1);
+				this.nota.add(nota2);
+				
+				if(!(nota1.getValor() < 4 && nota2.getValor() < 4)) {
+				return true;
+				}
+			}
+			
+			return false;
+		}
+	
+	public Boolean puedeRendirFinal(Nota nota1, Nota nota2) {
+		if ((registrarNota(nota1) && registrarNota(nota2))) {
+			this.nota.add(nota1);
+			this.nota.add(nota2);
+			
+			if((nota1.getValor() < 4 || nota2.getValor() < 4)) {
+			
+			return false;
+			}
+			return true;
+		}
+		
+		return false;
+
+	}
+	
+	public Boolean sePuedaObtener(Boolean registroNotaExitoso) {
+		Integer nota1 = 0;
+		Integer nota2 = 0;
+		if(registroNotaExitoso) {
+			for (int i = 0; i < cicloLectivo.size(); i++) {
+				if (this.registroDeNotaExamenes.get(i).getNota().getTipoParcial() == TipoDeNota.PRIMER_PARCIAL) {
+					nota1 = this.registroDeNotaExamenes.get(i).getNota().getValor();
+				}else if (this.registroDeNotaExamenes.get(i).getNota().getTipoParcial() == TipoDeNota.SDO_PARCIAL) {
+					nota2 = this.registroDeNotaExamenes.get(i).getNota().getValor();
+				}	
+
+			}
+			
+			calcularPromedio(nota1,nota2);
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public Integer calcularPromedio(Integer nota1, Integer nota2){
+		return (nota1 + nota2) / 2;
+	}
+	
+
+
+
+		/////////////////no se si va este metodo----------------
 		public Boolean sePuedeRegistrarNotaFinal(Nota nota) {
 			TipoDeNota tipo = nota.getTipoParcial();
 					
@@ -382,43 +485,36 @@ public class Universidad {
 			return true;
 	}
 		
-		public Boolean notaDeUnoADiez(Nota nota) {
-			if((nota.getValor() >= 1) && (nota.getValor() <= 10)) {
-					
-					return true;
-			     
-	        }
-			
-			return false;
-		}
+	
 		
 
-		public Boolean crearRegistroDeNota(Alumno alumno, Comision comision,
-				Nota nota) {
-			
-			Boolean alumnos = registrar(alumno); 
-			Boolean notas = registrarNota(nota);
-			Boolean comisiones = crearUnaComision(comision);
-			
-			if(alumnos && notas && comisiones) {
-				new RegistroDeNotaExamenes(alumno,nota,comision);
-				return true;
-			}
-			return false;
-		}
-
-
-		public Boolean verificarRecuperatorio(Nota nota) {
-			
-			if (existeRecu(nota) == null) {
-				this.nota.add(nota);
-				return true;
-			}
-
-			return false;
-		}
-
+//		public Boolean crearRegistroDeNota(Alumno alumno, Comision comision,
+//				Nota nota) {
+//			
+//			Boolean alumnos = registrar(alumno); 
+//			Boolean notas = registrarNota(nota);
+//			Boolean comisiones = crearUnaComision(comision);
+//			
+//			if(alumnos && notas && comisiones) {
+//				new RegistroDeNotaExamenes(alumno,nota,comision);
+//				return true;
+//			}
+//			return false;
+//		}
 		
+		
+
+//		public Boolean verificarRecuperatorio(Nota nota) {
+//			
+//			if (existeRecu(nota) == null) {
+//				this.nota.add(nota);
+//				return true;
+//			}
+//
+//			return false;
+//		}
+
+		///////////no se si va ///////////////////////
 		private Object existeRecu(Nota nota) {
 			
 			for (int i = 0; i < nota.size(); i++) {
@@ -429,6 +525,18 @@ public class Universidad {
 						return false;
 					}
 			} return null;
+		}
+
+
+		public void inscribirAlumnoAUnaMateria(Long dni, Integer codigoMateria, PlanDeEstudio tecnicatura) {
+		 if(buscarAlumnoPorDni(dni)!= null && tecnicatura.buscarMateriaPorCodigo(codigoMateria)!= null) { //verifique que este el alumno y este la materia en el plan de estudio 
+			 //verificar si esa materia tiene correlativa , si tiene correlativa ver que el alumno la tenga aprobada
+			 
+			 
+			 
+			 
+		 }
+			
 		}
 
 

@@ -2,9 +2,8 @@ package ar.edu.unlam.pb2.integrador1;
 
 
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
 
 public class PlanDeEstudio {
 
@@ -44,6 +43,8 @@ public class PlanDeEstudio {
 		this.nombreCarrera = nombreCarrera;
 	}
 	
+	
+
 	public Boolean ingresarMateriaAlPlanDeEstudio(Universidad universidad, Integer codigoMateria) {
 		
 		// buscar la materia que este registrada en el array de la universidad
@@ -100,6 +101,22 @@ public class PlanDeEstudio {
 
 
 
+	public Materia buscarMateriaPorCodigo(Integer codigoMateria) {
+		for (int i = 0; i < this.materiaDelPlan.size(); i++) {
+			if (this.materiaDelPlan.get(i).getCodigoDeMateria().equals(codigoMateria))
+				return this.materiaDelPlan.get(i);
+		}
+		return null;
+	}
+	
+	}
+
+
+
+
+
+
+
 	
 
 
@@ -110,7 +127,7 @@ public class PlanDeEstudio {
 
 	
 		
-	}
+	
 
 
 
