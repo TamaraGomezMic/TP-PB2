@@ -372,7 +372,7 @@ public class TestUniversidad {
 		}
 		
 		@Test
-		public void queSePuedaAsignarUnAulaAlaComision() { // falta HAcer
+		public void queSePuedaAsignarUnAulaAlaComision() { 
 				String nombreUni = "unlam";
 			Integer nroAula = 42343;
 			Integer capacidadMaxima= 60;
@@ -384,7 +384,7 @@ public class TestUniversidad {
 			
 			Boolean sePudoCrear =unlam.crearAula(aula);
 			
-			
+			assertTrue(sePudoCrear);
 		
 
 	}
@@ -619,7 +619,7 @@ public class TestUniversidad {
         
         Boolean registroNotaExitoso = unlam.crearRegistroDeNota(alumno, comision, nota1, nota2, nota3, nota4, nota5);
 		assertNotNull(registroNotaExitoso);
-    	System.out.println(registroNotaExitoso);
+    	//System.out.println(registroNotaExitoso);
     	
     	
 	}
@@ -627,52 +627,9 @@ public class TestUniversidad {
 	
 	
 	
-		
-	
-	
-	/*@Test  
-	public void queSePuedaRegistrarUnaNota() { 
-		String  nombreUniversidad = "Unlam";
-    	String nombre = "Marta";
-    	String apellido = "perez";
-    	Long dni= 44555897L; 
-    	Long celular = 1566655848L;
-    	String email = "martaPerez@unlam.edu.ar";
-		LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
-    	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
-    	Integer idAlumno = 1;
-    	
-    	
-    	Universidad unlam = new Universidad(nombreUniversidad);
-   		Alumno alumno = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
-   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
-	    	   	
-		Boolean registroExitoso = unlam.registrar(alumno);
-    	assertTrue(registroExitoso);
-    	//System.out.println(registroExitoso);
-    	 * 
-    	 * 
-    	 * 
-    	 * 
-    	 * 
-    	 * String nombreMateria1 = "PB2 ", nombreMateria2 ="PB1";
-        Integer codigo = 1;
-        
-        Universidad unlam = new Universidad (nombre);
-        Materia pb2 = new Materia(codigo,nombreMateria1);
-        Materia pb1 = new Materia(codigo,nombreMateria2);
-        
-        unlam.registraMateria(pb2);
-        assertFalse (unlam.registraMateria(pb1));
-    	
-    	
-	} */
-	
-	/////no se si esta bien ---- no coincide el nombre del test
-	
 	@Test
-	// verificar que el alumno y el curso esten dado de alta
-	public void queSePuedaInscribirAlumnoAunCurso() {
+	
+	public void queSePuedanCalcularElPromedio() {
 		
 		String  nombreUniversidad = "Unlam";
 		//alumno
@@ -687,7 +644,7 @@ public class TestUniversidad {
 		//nota
     	Integer valorNota1= 10;
 		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
-		Integer valorNota2= 5;
+		Integer valorNota2= 6;
 		TipoDeNota tipoN2 = TipoDeNota.SDO_PARCIAL;
 		Integer valorNota3= 1;
 		TipoDeNota tipoN3 = TipoDeNota.REC_1PARCIAL;
@@ -714,15 +671,14 @@ public class TestUniversidad {
 
         
         Boolean registroNotaExitoso = unlam.crearRegistroDeNota(alumno, comision, nota1, nota2, nota3, nota4, nota5);
-        //Boolean seObtuvo = unlam.sePuedaObtener(registroNotaExitoso);
+        Boolean seObtuvo = unlam.sePuedaObtener(registroNotaExitoso);
         
         
-        assertNotNull(registroNotaExitoso);
-    	System.out.println(registroNotaExitoso);
+        assertNotNull(seObtuvo);
+    	System.out.println(seObtuvo);
     	
+	
 	}
-	
-	
 	
 										//ALUMNO
 	

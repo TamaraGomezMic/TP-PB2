@@ -227,9 +227,6 @@ public class Universidad {
 		}
 
 
-		//.after(inicioRangoCiclo) || cicloLectivo.equals(inicioRangoCiclo))
-				//&& (cicloLectivo.before(finRangoCiclo) || cicloLectivo.equals(finRangoCiclo))
-
 		
 
 		public CicloLectivo buscarCicloPorID(Integer idCiclo) {
@@ -457,73 +454,6 @@ public class Universidad {
 	}
 	
 
-
-
-		/////////////////no se si va este metodo----------------
-		public Boolean sePuedeRegistrarNotaFinal(Nota nota) {
-			TipoDeNota tipo = nota.getTipoParcial();
-					
-			if (tipo == TipoDeNota.FINAL) {
-				for (int i = 0; i < nota.size(); i++) {
-					if ((this.nota.get(i).getTipoParcial() == TipoDeNota.PRIMER_PARCIAL) && ((this.nota.get(i).getValor() < 4) || (this.nota.get(i).getValor() > 10))) {
-						
-						return false;
-					
-						
-				}else if ((this.nota.get(i).getTipoParcial() == TipoDeNota.SDO_PARCIAL) && ((this.nota.get(i).getValor() < 4) || (this.nota.get(i).getValor() > 10))) {
-				
-			
-					return false;
-			}
-			
-					
-			}
-				return false;
-		}
-			return true;
-	}
-		
-	
-		
-
-//		public Boolean crearRegistroDeNota(Alumno alumno, Comision comision,
-//				Nota nota) {
-//			
-//			Boolean alumnos = registrar(alumno); 
-//			Boolean notas = registrarNota(nota);
-//			Boolean comisiones = crearUnaComision(comision);
-//			
-//			if(alumnos && notas && comisiones) {
-//				new RegistroDeNotaExamenes(alumno,nota,comision);
-//				return true;
-//			}
-//			return false;
-//		}
-		
-		
-
-//		public Boolean verificarRecuperatorio(Nota nota) {
-//			
-//			if (existeRecu(nota) == null) {
-//				this.nota.add(nota);
-//				return true;
-//			}
-//
-//			return false;
-//		}
-
-		///////////no se si va ///////////////////////
-		private Object existeRecu(Nota nota) {
-			
-			for (int i = 0; i < nota.size(); i++) {
-				if ((this.nota.get(i).getTipoParcial() == TipoDeNota.PRIMER_PARCIAL && this.nota.get(i).getValor() < 4) && (nota.getTipoParcial() == TipoDeNota.SDO_PARCIAL && nota.getValor() < 4)) {
-						return false;
-					
-					} else if ((this.nota.get(i).getTipoParcial() == TipoDeNota.SDO_PARCIAL && this.nota.get(i).getValor() < 4) && (nota.getTipoParcial() == TipoDeNota.PRIMER_PARCIAL && nota.getValor() < 4)) {
-						return false;
-					}
-			} return null;
-		}
 
 
 		public void inscribirAlumnoAUnaMateria(Long dni, Integer codigoMateria, PlanDeEstudio tecnicatura) {
