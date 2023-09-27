@@ -317,30 +317,4 @@ public class Universidad {
 		
 
 
-		
-
-		
-		
-
-
-		
-
-
-
-
-		
-
-
-
-		
-
-
-		
-
-
-		
-
-
-
-
 }
