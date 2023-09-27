@@ -16,6 +16,8 @@ public class Universidad {
 		private ArrayList<Comision> comision;
 		private ArrayList<CicloLectivo> cicloLectivo;
 		private ArrayList<Aula> aula;
+		private ArrayList<Nota> nota;
+		private ArrayList<RegistroDeNotaExamenes> registroDeNotaExamenes;
 
 		public Universidad(String nombre) {
 			this.setNombreUni(nombre);
@@ -26,6 +28,8 @@ public class Universidad {
 			this.comision = new ArrayList<Comision>();
 			this.cicloLectivo = new ArrayList<CicloLectivo>();
 			this.aula = new ArrayList<Aula>();
+			this.nota = new ArrayList<Nota>();
+			this.registroDeNotaExamenes = new ArrayList<RegistroDeNotaExamenes>();
 		}
 
 
@@ -314,19 +318,114 @@ public class Universidad {
 			return this.aula.add(aula);
 			
 		}
-		
-
 
 		
-
+		//---------NOTA---------
 		
 		
 
+		public Boolean registrarNota(Nota nota) {
+			
+			
+			this.nota.add(nota);
+			return true;
+			     
+	      
+		}
 
+		public Boolean queElTipoDeNotaSeaValido(Nota nota) {
+			TipoDeNota tipo = nota.getTipoParcial();
+					
+				 if (tipo != TipoDeNota.PRIMER_PARCIAL &&
+				            tipo != TipoDeNota.SDO_PARCIAL &&
+				            tipo != TipoDeNota.REC_1PARCIAL &&
+				            tipo != TipoDeNota.REC_2DOPARCIAL &&
+				            tipo != TipoDeNota.FINAL) {
+					 return false;
+	        }
+			
+			return true;
+		}
+		
+		public Boolean sePuedeRegistrarNotaFinal(Nota nota) {
+			TipoDeNota tipo = nota.getTipoParcial();
+					
+			if (tipo == TipoDeNota.FINAL) {
+				for (int i = 0; i < nota.size(); i++) {
+					if ((this.nota.get(i).getTipoParcial() == TipoDeNota.PRIMER_PARCIAL) && ((this.nota.get(i).getValor() < 4) || (this.nota.get(i).getValor() > 10))) {
+						
+						return false;
+					
+						
+				}else if ((this.nota.get(i).getTipoParcial() == TipoDeNota.SDO_PARCIAL) && ((this.nota.get(i).getValor() < 4) || (this.nota.get(i).getValor() > 10))) {
+				
+			
+					return false;
+			}
+			
+					
+			}
+				return false;
+		}
+			return true;
+	}
+		
+		public Boolean notaDeUnoADiez(Nota nota) {
+			if((nota.getValor() >= 1) && (nota.getValor() <= 10)) {
+					
+					return true;
+			     
+	        }
+			
+			return false;
+		}
 		
 
+		public Boolean crearRegistroDeNota(Alumno alumno, Comision comision,
+				Nota nota) {
+			
+			Boolean alumnos = registrar(alumno); 
+			Boolean notas = registrarNota(nota);
+			Boolean comisiones = crearUnaComision(comision);
+			
+			if(alumnos && notas && comisiones) {
+				new RegistroDeNotaExamenes(alumno,nota,comision);
+				return true;
+			}
+			return false;
+		}
 
 
+		public Boolean verificarRecuperatorio(Nota nota) {
+			
+			if (existeRecu(nota) == null) {
+				this.nota.add(nota);
+				return true;
+			}
+
+			return false;
+
+	}
+
+		
+		private Object existeRecu(Nota nota) {
+			
+			for (int i = 0; i < nota.size(); i++) {
+				if ((this.nota.get(i).getTipoParcial() == TipoDeNota.PRIMER_PARCIAL && this.nota.get(i).getValor() < 4) && (nota.getTipoParcial() == TipoDeNota.SDO_PARCIAL && nota.getValor() < 4)) {
+						return false;
+					
+					} else if ((this.nota.get(i).getTipoParcial() == TipoDeNota.SDO_PARCIAL && this.nota.get(i).getValor() < 4) && (nota.getTipoParcial() == TipoDeNota.PRIMER_PARCIAL && nota.getValor() < 4)) {
+						return false;
+					}
+					
+				}
+				
+			
+			return null;
+		}
+
+
+		
 
 		
 

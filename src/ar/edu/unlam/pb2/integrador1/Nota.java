@@ -2,11 +2,11 @@ package ar.edu.unlam.pb2.integrador1;
 
 public class Nota {
 	private Integer valor;
-	private TipoDeNota tipoParcial;
+	private TipoDeNota tipoNota;
 	
-	public Nota(Integer valor, TipoDeNota tipoParcial) {
+	public Nota(Integer valor, TipoDeNota tipoNota) {
 		this.setValor(valor);
-		this.setTipoParcial(tipoParcial);
+		this.setTipoParcial(tipoNota);
 	}
 
 	public Integer getValor() {
@@ -18,10 +18,17 @@ public class Nota {
 	}
 
 	public TipoDeNota getTipoParcial() {
-		return tipoParcial;
+		return tipoNota;
 	}
 
 	public void setTipoParcial(TipoDeNota tipoParcial) {
-		this.tipoParcial = tipoParcial;
+		this.tipoNota = tipoParcial;
 	}
+
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 }

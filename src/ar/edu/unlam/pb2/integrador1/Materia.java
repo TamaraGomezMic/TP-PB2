@@ -1,7 +1,7 @@
 package ar.edu.unlam.pb2.integrador1;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Objects;
 
 
@@ -78,6 +78,7 @@ public class Materia {
 //		
 //		
 //	}
+	
 	
 	
 

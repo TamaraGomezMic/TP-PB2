@@ -200,7 +200,7 @@ public class TestUniversidad {
 	   		Boolean registroExitoso = unlam.registrar(alumno2);
 	   		
 	   		assertFalse(registroExitoso);
-	   		System.out.println("el alumno tiene el mismo dni que un alumno ya registrado");
+	   		//System.out.println("el alumno tiene el mismo dni que un alumno ya registrado");
 
     	
 	}
@@ -440,9 +440,6 @@ public class TestUniversidad {
 	  
 		}
 	
-
-
-	
 	
 	//ciclo lectivo  id, fechaDeInicioDeCicloLectivo,fechaFinalizacionCicloLectivo, fechaInicioInscripcion,fechaFinalizacionInscripcion
 	@Test
@@ -488,11 +485,127 @@ public class TestUniversidad {
 		
 		Boolean sePudoCrear =unlam.crearAula(aula);
 		assertNotNull(sePudoCrear);
-		System.out.println(sePudoCrear);
+		//System.out.println(sePudoCrear);
 	
 
 }
 
+	//-------------------NOTAS---------------
+	
+	@Test  
+	public void queSePuedaCrearUnaNota() { 
+		String  nombreUniversidad = "Unlam";
+		Integer valorNota= 1;
+		TipoDeNota tipoN = TipoDeNota.FINAL;
+    	
+    	Universidad unlam = new Universidad(nombreUniversidad);
+    	Nota nota = new Nota(valorNota, tipoN);
+	    	   	
+		Boolean registroExitoso = unlam.registrarNota(nota);
+		assertNotNull(registroExitoso);
+    	//System.out.println(registroExitoso);
+    	
+    	
+	}
+	
+	@Test  
+	public void queNoSePuedanRendirDosRecuperatorios() { 
+		String  nombreUniversidad = "Unlam";
+		Integer valorNota1= 1;
+		TipoDeNota tipoN1 = TipoDeNota.PRIMER_PARCIAL;
+		Integer valorNota2= 3;
+		TipoDeNota tipoN2 = TipoDeNota.SDO_PARCIAL;
+    	
+    	Universidad unlam = new Universidad(nombreUniversidad);
+    	Nota nota1 = new Nota(valorNota1, tipoN1);
+    	Nota nota2 = new Nota(valorNota2, tipoN2);
+	    	   	
+    	unlam.registrarNota(nota1);
+		Boolean registroExitoso = unlam.verificarRecuperatorio(nota2);
+		assertNotNull(registroExitoso);
+    	System.out.println(registroExitoso);
+    	
+    	
+	}
+	
+	
+	@Test  
+	public void queSePuedaRegistrarUnaNotaDeUnaMateriaAUnAlumno() { 
+		
+		String  nombreUniversidad = "Unlam";
+		//alumno
+    	String nombre = "Marta";
+    	String apellido = "perez";
+    	Long dni= 44555897L; 
+    	Long celular = 1566655848L;
+    	String email = "martaPerez@unlam.edu.ar";
+		LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+    	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+    	Integer idAlumno = 1;
+		//nota
+		Integer valorNota= 1;
+		TipoDeNota tipoN = TipoDeNota.FINAL;
+		//comision
+		Integer idComision = 2343;
+        
+        
+		Integer nroLegajo=1;
+		
+		Universidad unlam = new Universidad(nombreUniversidad);
+    	Alumno alumno = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
+   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
+        Nota nota = new Nota(valorNota, tipoN);
+        Comision comision = new Comision( idComision);
+
+        
+        Boolean registroNotaExitoso = unlam.crearRegistroDeNota(alumno, comision, nota);
+		assertNotNull(registroNotaExitoso);
+    	//System.out.println(registroNotaExitoso);
+    	
+    	
+	}
+	
+	
+	/*@Test  
+	public void queSePuedaRegistrarUnaNota() { 
+		String  nombreUniversidad = "Unlam";
+    	String nombre = "Marta";
+    	String apellido = "perez";
+    	Long dni= 44555897L; 
+    	Long celular = 1566655848L;
+    	String email = "martaPerez@unlam.edu.ar";
+		LocalDate fechaDeNacimientoAlu=LocalDate.of(2003, 01, 03);
+    	LocalDate fechaDeIngresoAlu=LocalDate.of(2023, 01, 03);
+    	Integer idAlumno = 1;
+    	
+    	
+    	Universidad unlam = new Universidad(nombreUniversidad);
+   		Alumno alumno = new Alumno(idAlumno,dni,nombre,celular, email, apellido,
+   				fechaDeNacimientoAlu,fechaDeIngresoAlu);
+	    	   	
+		Boolean registroExitoso = unlam.registrar(alumno);
+    	assertTrue(registroExitoso);
+    	//System.out.println(registroExitoso);
+    	 * 
+    	 * 
+    	 * 
+    	 * 
+    	 * 
+    	 * String nombreMateria1 = "PB2 ", nombreMateria2 ="PB1";
+        Integer codigo = 1;
+        
+        Universidad unlam = new Universidad (nombre);
+        Materia pb2 = new Materia(codigo,nombreMateria1);
+        Materia pb1 = new Materia(codigo,nombreMateria2);
+        
+        unlam.registraMateria(pb2);
+        assertFalse (unlam.registraMateria(pb1));
+    	
+    	
+	} */
+	
+	
+	
 	
 	
 //	@Test
