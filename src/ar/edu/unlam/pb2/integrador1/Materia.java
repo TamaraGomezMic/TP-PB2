@@ -10,8 +10,7 @@ public class Materia {
 	private Integer codigoDeMateria;
 	private String nombre;
 	private ArrayList <Materia> correlativa;
-	//private ArrayList <CicloLectivo> cicloLectivo;
-	//private HashSet<CicloLectivo> ciclos;
+	
 
 	public Materia(Integer codigo, String nombre) {
 	    this.codigoDeMateria = codigo;
@@ -46,25 +45,10 @@ public class Materia {
 	}
 
 
-	public void setCorrelativa(ArrayList<Materia> correlativa) {
-		this.correlativa = correlativa;
+	public void setCorrelativa(Materia correlativa) {
+		this.correlativa.add(correlativa);
 	}
 
-
-//	public ArrayList <CicloLectivo> getCicloLectivo() {
-//		return cicloLectivo;
-//	}
-//
-//
-//	public void setCicloLectivo(ArrayList <CicloLectivo> cicloLectivo) {
-//		this.cicloLectivo = cicloLectivo;
-//	}
-//
-//
-//	public void agregarCicloLectivo(CicloLectivo ciclo) {
-//		ciclos.add(ciclo);
-//		
-//	}
 
 
 
