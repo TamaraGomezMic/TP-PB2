@@ -87,7 +87,7 @@ public class Universidad {
 				
 		   }
 		   
-		private Materia buscarMateriaPorCodigo(Integer codigo) {
+		public Materia buscarMateriaPorCodigo(Integer codigo) {
 			for (int i = 0; i < this.materia.size(); i++) {
 				if (this.materia.get(i).getCodigoDeMateria().equals(codigo))
 					return this.materia.get(i);
@@ -95,8 +95,20 @@ public class Universidad {
 			return null;
 		}
 		
+		
+		
 
-		public boolean inscribirAlumnoAUnaMateria(Long dni, Integer codigo) {
+
+		public ArrayList<Materia> getMateria() {
+			return materia;
+		}
+
+
+		public void setMateria( Materia materia) {
+			this.materia.add(materia);
+		}
+
+ boolean inscribirAlumnoAUnaMateria(Long dni, Integer codigo) {
 			
 			//no se puede inscribir alumnos si no tiene al menps cursada todas las correlativas(correlativas nota >=4)
 		
