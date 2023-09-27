@@ -25,7 +25,6 @@ public class Comision {
 		profesorAsignado = new HashSet <Profesor>();
 		alumnosAsignados = new HashSet <Alumno>();
 		
-	
 		
 	}
 
